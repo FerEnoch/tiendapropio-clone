@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>clon-maxiofertas.tiendapropio</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    <style type="text/tailwindcss">
+
+        body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    @theme {
+        --color-base-100: #f0f0f0;
+        --color-base-200: #e0e0e0;
+        --color-base-300: #c0c0c0;
+        --color-base-400: #a0a0a0;
+        --color-base-500: #8a8a8a;
+        --color-base-content: #000000;
+    
+        --color-secondary: #E3C200;
+        --color-secondary-content: #FFFFFF;
+        --color-secondary-focus: #ad9402;
+    
+        --color-neutral: #EDEDED;
+        --color-neutral-content: #3D4451;
+        --color-neutral-focus: #d3cfc4;
+    
+        --color-accent: #E10719;
+        --color-accent-content: #FFFFFF;
+        --color-accent-focus: #a60311;
+    
+        --color-warning: #EADB26;
+        --color-warning-content: #D97706;
+    
+        --color-success: #71D230;
+        --color-success-content: #16A34A;
+    
+        --color-error: #FF4A4A;
+        --color-error-content: #FFFFFF;
+    
+    }
+    
+    @utility container {
+        margin-inline: auto;
+    }
+    
+    .btn {
+        @apply relative flex flex-nowrap gap-2 py-2 px-4
+            cursor-pointer
+            rounded-full normal-case border border-accent-content
+            transition duration-200 ease-out;
+    }
+    
+    .btn-neutral {
+        @apply bg-neutral text-neutral-content hover:bg-neutral-focus
+            transition duration-200 ease-out;
+    }
+    
+    .btn-accent {
+        @apply bg-accent text-accent-content hover:bg-accent-focus
+            transition duration-200 ease-out;
+    }
+    
+    .btn-secondary {
+        @apply bg-secondary text-secondary-content hover:bg-secondary-focus
+         transition duration-200 ease-out;
+        @apply w-full grid content-center;
+    }
+    
+    .btn-ghost {
+        @apply bg-transparent text-base-content hover:bg-neutral-focus
+         transition duration-200 ease-out;
+    }
+    
+    .header {
+        @apply sticky top-0 w-full py-0 z-20
+                flex justify-center items-center md:justify-between 
+                bg-base-100 text-base-content;
+    }
+    
+    .header_wrapper{
+        @apply my-4 md:my-0 h-full w-auto mx-auto pe-4 
+                flex justify-between items-center 
+                md:container 2xl:max-w-screen-xl;
+    }
+    
+    .header_navber {
+        @apply hidden md:flex justify-end items-center w-full h-full;
+    }
+    
+    .header_navber_links {
+        @apply flex items-stretch justify-between h-full min-h-[5rem]; 
+    }
+    
+    .header_navber_link-item {
+        @apply flex items-center justify-center h-full;
+    }
+    
+    .header_navber_item_button {
+        @apply  h-full w-full min-h-[5rem]
+                flex justify-between items-center gap-2
+                rounded-none
+                px-4
+                text-xs font-bold sm:text-sm;
+    }
+    
+    .search-product-section {
+        @apply flex w-full items-center justify-between h-[6rem] 
+                md:h-[7rem] md:px-4;
+    }
+    
+    .input-section {
+        @apply  m-auto mb-2 
+                w-[85vw] md:w-full 
+                z-9 relative;
+    }
+    
+    .input-element {
+        @apply h-[3rem] border-0 w-full rounded-full rounded-l-none !outline-0 !ring-0 !bg-transparent text-[1.2rem];
+    }
+    
+    .card-product {
+        content-visibility: auto;
+        @apply w-full max-w-[20rem] h-full flex flex-col justify-between items-start gap-4
+            bg-white rounded-2xl
+            shadow-xl hover:shadow-2xl hover:scale-[1.03] 
+            cursor-pointer transition;
+    }
+    
+    .card-product_product-image-wrapper {
+        box-sizing: border-box;
+        display: inline-block;
+        overflow: hidden;
+        width: initial;
+        height: initial;
+        background: none;
+        opacity: 1;
+        max-width: 100%;
+        @apply relative rounded-t-2xl p-0 m-0 border-0;
+    }
+    
+    .card-product_product-image {
+        display: block;
+        max-width: 100%;
+        width: initial;
+        height: initial;
+        background: none;
+        opacity: 1;
+        @apply p-0 m-0 border-0;
+    }
+    
+    .card-product_product-info {
+        @apply h-full p-0 px-4 pb-4 
+            flex flex-col justify-between items-start gap-4;
+    }
+    
+    .category-list {
+        @apply py-2 md:mt-0 md:ps-4
+            flex items-stretch justify-start md:flex-col space-x-2 md:space-x-0 md:space-y-2
+            overflow-y-visible overflow-x-auto md:overflow-x-visible 
+            md:w-44 lg:w-48;
+    }
+    
+    .category-list_category-item {
+        @apply first:ps-2 md:first:ps-0 last:pe-2 md:last:pe-0;
+    }
+    
+    .category-list_category-item_button {
+        @apply w-full min-w-[10rem] flex items-center h-[3rem] rounded-2xl;
+    }
+
+        </style>
+</head>
+
+<body>
+    <div class="bg-base-200 flex flex-col subpixel-antialiased">
+        <!-- header and main layout-->
+        <div class="min-h-screen relative">
+            <!-- header -->
+            <header class="header">
+                <!-- wrapper -->
+                <div class="header_wrapper">
+                    <!-- logo -->
+                    <a href="/" class="
+                        btn-ghost 
+                        h-[3rem] gap-0 px-0 text-xl font-bold normal-case sm:px-4
+                        rounded-2xl
+                    ">
+                        <img height="50" width="200" src="/assets/logo.png" alt=""
+                            class="m-0 h-full w-auto object-contain">
+                    </a>
+                    <!-- pc screen nav menu -->
+                    <section class="header_navber">
+                        <ul class="header_navber_links">
+                            <!-- search (active state: btn-accent) -->
+                            <li class="header_navber_link-item">
+                                <a class="btn-accent header_navber_item_button">
+                                    <svg aria-hidden="true" focusable="false" data-prefix="fas"
+                                        data-icon="magnifying-glass" class="h-[1.2rem]" role="img"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path fill="currentColor"
+                                            d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z">
+                                        </path>
+                                    </svg>
+                                    <span>
+                                        Explorar
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- cart -->
+                            <li class="header_navber_link-item">
+                                <a class="btn-ghost header_navber_item_button">
+                                    <svg id='Delivery_Handcart_24' width='20' height='20' viewBox='0 0 24 24'
+                                        xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+                                        <rect width='24' height='24' stroke='none' fill='#000000' opacity='0' />
+                                        <g transform="matrix(1 0 0 1 12 12)">
+                                            <path
+                                                style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"
+                                                transform=" translate(-11.5, -12)"
+                                                d="M 3 2 C 2.639364083422431 1.9948997104545152 2.303918635428393 2.184375296169332 2.122112278513483 2.495872849714331 C 1.9403059215985725 2.8073704032593296 1.9403059215985727 3.1926295967406713 2.1221122785134834 3.50412715028567 C 2.303918635428394 3.815624703830669 2.6393640834224317 4.005100289545485 3.000000000000001 4 L 4 4 L 4 14 C 4 15.64497 5.3550302 17 7 17 L 20 17 C 20.360635916577568 17.005100289545485 20.696081364571608 16.815624703830668 20.877887721486516 16.50412715028567 C 21.059694078401428 16.19262959674067 21.059694078401428 15.80737040325933 20.877887721486516 15.495872849714331 C 20.696081364571608 15.184375296169332 20.360635916577568 14.994899710454515 20 15 L 7 15 C 6.4349698 15 6 14.56503 6 14 L 6 4 C 6 2.9069372 5.0930628 2 4 2 L 3 2 z M 10 4 C 8.895 4 8 4.895 8 6 L 8 11 C 8 12.105 8.895 13 10 13 L 18 13 C 19.105 13 20 12.105 20 11 L 20 6 C 20 4.895 19.105 4 18 4 L 10 4 z M 13 6 L 15 6 C 15.552 6 16 6.448 16 7 C 16 7.552 15.552 8 15 8 L 13 8 C 12.448 8 12 7.552 12 7 C 12 6.448 12.448 6 13 6 z M 8 18 C 6.8954305003384135 18 6 18.895430500338414 6 20 C 6 21.104569499661586 6.8954305003384135 22 8 22 C 9.104569499661586 22 10 21.104569499661586 10 20 C 10 18.895430500338414 9.104569499661586 18 8 18 z M 18 18 C 16.895430500338414 18 16 18.895430500338414 16 20 C 16 21.104569499661586 16.895430500338414 22 18 22 C 19.104569499661586 22 20 21.104569499661586 20 20 C 20 18.895430500338414 19.104569499661586 18 18 18 z"
+                                                stroke-linecap="round" />
+                                        </g>
+                                    </svg>
+                                    <span>
+                                        Carrito
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- orders -->
+                            <li class="header_navber_link-item">
+                                <a class="btn-ghost header_navber_item_button">
+                                    <svg id='truck_24' width='22' height='22' viewBox='0 0 24 24'
+                                        xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+                                        <rect width='24' height='24' stroke='none' fill='#000000' opacity='0' />
+                                        <g transform="matrix(1 0 0 1 12 12)">
+                                            <g style="">
+                                                <g transform="matrix(1 0 0 1 0 0)">
+                                                    <path
+                                                        style="stroke: none; stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"
+                                                        transform=" translate(-12, -12)"
+                                                        d="M 0 0 L 24 0 L 24 24 L 0 24 z" stroke-linecap="round" />
+                                                </g>
+                                                <g transform="matrix(1 0 0 1 -5 5)">
+                                                    <circle
+                                                        style="stroke: rgb(33,33,33); stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"
+                                                        cx="0" cy="0" r="2" />
+                                                </g>
+                                                <g transform="matrix(1 0 0 1 5 5)">
+                                                    <circle
+                                                        style="stroke: rgb(33,33,33); stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"
+                                                        cx="0" cy="0" r="2" />
+                                                </g>
+                                                <g transform="matrix(1 0 0 1 0 -1)">
+                                                    <path
+                                                        style="stroke: rgb(33,33,33); stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"
+                                                        transform=" translate(-12, -11)"
+                                                        d="M 5 17 L 3 17 L 3 6 C 3 5.447715250169207 3.4477152501692068 5 4 5 L 13 5 L 13 17 M 9 17 L 15 17 M 19 17 L 21 17 L 21 11 L 13 11 M 13 6 L 18 6 L 21 11"
+                                                        stroke-linecap="round" />
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    <span>
+                                        Pedidos
+                                    </span>
+                                </a>
+                            </li>
+                            <!-- profile -->
+                            <li class="header_navber_link-item">
+                                <a class="btn-ghost header_navber_item_button">
+                                    <svg id='Male_User_24' width='22' height='22' viewBox='0 0 24 24'
+                                        xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+                                        <rect width='24' height='24' stroke='none' fill='#000000' opacity='0' />
+                                        <g transform="matrix(0.77 0 0 0.77 12 12)">
+                                            <path
+                                                style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"
+                                                transform=" translate(-16, -16)"
+                                                d="M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 16 8 C 13.25 8 11 10.25 11 13 C 11 14.515625 11.707031 15.863281 12.78125 16.78125 C 10.53125 17.949219 9 20.300781 9 23 L 11 23 C 11 20.226563 13.226563 18 16 18 C 18.773438 18 21 20.226563 21 23 L 23 23 C 23 20.300781 21.46875 17.949219 19.21875 16.78125 C 20.292969 15.863281 21 14.515625 21 13 C 21 10.25 18.75 8 16 8 Z M 16 10 C 17.667969 10 19 11.332031 19 13 C 19 14.667969 17.667969 16 16 16 C 14.332031 16 13 14.667969 13 13 C 13 11.332031 14.332031 10 16 10 Z"
+                                                stroke-linecap="round" />
+                                        </g>
+                                    </svg>
+                                    <span>
+                                        Ingresar
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </header>
+            <main class="w-full h-full flex justify-center relative">
+                <!-- wrapper -->
+                <div class="container flex justify-center pb-20 pt-4 lg:pb-0 2xl:max-w-screen-xl">
+                    <!-- wrapper -->
+                    <div class="container">
+                        <!-- products search section -->
+                        <section class="search-product-section">
+                            <div class="hidden grow basis-0 md:block">
+                                <h1 class="m-0 text-2xl font-semibold opacity-50 md:text-4xl">
+                                    Encuentra lo que necesitas
+                                </h1>
+                            </div>
+                            <!-- search wrapper -->
+                            <div class="relative flex grow basis-0">
+                                <!-- search input -->
+                                <div class="input-section">
+                                    <span
+                                        class="bg-base-100 z-50 top-[1rem] left-[1.2rem] absolute left-10 rounded-full">
+                                        <svg aria-hidden="true" focusable="false" data-prefix="fas"
+                                            data-icon="magnifying-glass" class="h-[1.2rem] opacity-30" role="img"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor"
+                                                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                    <div class="
+                                        bg-base-100 
+                                        relative w-full ps-[3rem]
+                                        rounded-full border-1 border-base-300 hover:border-base-content
+                                        transition duration-200 ease-out
+                                        ">
+                                        <input id="search" class="input-element" type="text" name="search"
+                                            autocomplete="off" placeholder="Buscar productos" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- categories & products -->
+                        <section class="flex w-full flex-col justify-between md:flex-row md:gap-8">
+                            <!-- categories section -->
+                            <section class="flex flex-col">
+                                <!-- category list title -->
+                                <div class="m-4 hidden cursor-pointer items-center justify-between md:flex">
+                                    <span class="text-sm opacity-50">
+                                        Categorías
+                                    </span>
+                                    <button class="btn btn-neutral leading-[.5rem]">
+                                        -
+                                    </button>
+                                </div>
+                                <!-- category list -->
+                                <ul class="category-list">
+                                    <!-- category -->
+                                    <li class="category-list_category-item">
+                                        <button class="category-list_category-item_button btn btn-accent">
+                                            <a href="/" class="flex w-full items-center justify-between gap-1">
+                                                <span class="text-start font-bold">
+                                                    Todos
+                                                </span>
+                                                <figure class="overflow-visible">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="32"
+                                                        alt="Todos"
+                                                        class="relative object-cover m-auto w-auto transform scale-60 fill-accent-content">
+                                                        <path
+                                                            d="M26.353 24.847a.753.753 0 1 1 1.506 0 .753.753 0 1 1-1.506 0">
+                                                        </path>
+                                                        <path
+                                                            d="M36.8 6.494 33.788.47c-.094-.188-.282-.376-.565-.376H4.422c-.188 0-.471.094-.565.376L.939 6.494v1.882c0 2.259 1.318 3.953 3.012 4.706v17.976c0 .376.282.565.565.565h28.706c.376 0 .565-.282.565-.565V12.987c1.694-.753 3.012-2.447 3.012-4.706V6.493zm-3.953-5.176 2.447 4.8h-6.118l-1.224-4.8zm-13.459 0h7.247l1.224 4.8h-8.471zm0 6.023h8.659v3.765c-1.976 3.012-6.212 3.482-8.659.941zm-8.376-6.023h7.247v4.8H9.788zm7.247 6.023v4.706c-2.447 2.635-6.588 2.071-8.659-.941V7.341zM4.8 1.318h4.894l-1.129 4.8H2.447zM2.071 8.282v-.941h6.4v3.671c-2.729 2.447-6.4.565-6.4-2.729zm27.482 22.024h-6.4V17.977h6.4zm3.012 0h-1.788V17.318c0-.376-.282-.565-.565-.565h-7.529c-.376 0-.565.282-.565.565v12.988H5.177V13.271c1.224.188 2.635-.188 3.859-1.129 2.447 3.2 7.059 3.671 9.976.941 2.918 2.729 7.435 2.259 9.976-.941 1.224.941 2.541 1.318 3.859 1.129v17.035zm3.011-22.024c0 3.294-3.671 5.176-6.4 2.729V7.34h6.4z">
+                                                        </path>
+                                                        <path
+                                                            d="M19.576 16.753H7.435c-.376 0-.565.282-.565.565v9.035c0 .376.282.565.565.565h12.141c.376 0 .565-.282.565-.565v-9.035c0-.282-.188-.565-.565-.565m-.564 9.035H8.094v-7.906h10.918z">
+                                                        </path>
+                                                    </svg>
+                                                </figure>
+                                            </a>
+                                        </button>
+                                    </li>
+                                    <!-- category -->
+                                    <li class="category-list_category-item">
+                                        <button class="category-list_category-item_button btn btn-neutral">
+                                            <a href="/" class="flex w-full items-center justify-between gap-1">
+                                                <span class="text-start font-semibold">
+                                                    Destacados
+                                                </span>
+                                                <figure class="overflow-visible">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="32"
+                                                        alt="Destacados"
+                                                        class="relative object-cover m-auto w-auto transform scale-70 fill-neutral-content">
+                                                        <path
+                                                            d="M11.771 32A11.754 11.754 0 0 1 0 20.229c0-4.686 1.6-9.257 4.686-12.8l1.143-1.371L5.6 8.344c0 1.257.457 2.4 1.371 3.314.8.8 1.943 1.371 3.2 1.371 2.4 0 4.229-1.943 4.229-4.686-.114-2.171-.457-4.457-1.029-6.514L12.914 0l1.257 1.143C20 5.829 23.428 12.8 23.542 20.229A11.754 11.754 0 0 1 11.771 32m-7.2-22.629c-2.286 3.2-3.429 6.971-3.429 10.857 0 5.829 4.8 10.629 10.629 10.629S22.4 26.057 22.4 20.228c0-6.514-2.743-12.686-7.543-17.143q.514 2.572.686 5.143c0 3.429-2.286 5.829-5.371 5.829-1.486 0-2.971-.571-4-1.714-.914-.8-1.371-1.829-1.6-2.971zm6.743 18.4c-2.743 0-5.029-2.171-5.029-4.914 0-2.514 1.6-4.343 4.343-4.914 2.4-.343 4.571-1.6 6.171-3.429l.686-.8.343 1.029c.571 1.943.8 3.886.8 5.829 0 3.886-3.2 7.2-7.314 7.2zM17.029 16c-1.714 1.6-3.771 2.629-6.057 3.086-2.171.457-3.429 1.829-3.429 3.771 0 2.171 1.829 3.771 3.886 3.771a6.145 6.145 0 0 0 6.171-6.171c-.114-1.486-.229-2.971-.571-4.457">
+                                                        </path>
+                                                    </svg>
+                                                </figure>
+                                            </a>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </section>
+                            <!-- products main section -->
+                            <section class="flex w-full flex-col justify-start md:gap-8">
+                                <!-- card sponsored -->
+                                <div
+                                    class="w-full h-full flex flex-row gap-4 rounded-2xl mt-4 px-4 overflow-x-auto overflow-y-hidden">
+                                    <div
+                                        class="w-full h-full flex-[0_0_auto] cursor-pointer transition hover:scale-[1.03] hover:shadow-2xl">
+                                        <a class="
+                                            relative 
+                                            h-[6.8rem] w-full
+                                            flex flex-col items-start justify-start 
+                                            !bg-accent
+                                            rounded-2xl" href="/"">
+                                            <h2 class=" font-semibold text-accent-content text-xs lg:text-md uppercase
+                                            my-0 ml-4 mt-4 sm:mt-2 xl:text-lg z-10 ">
+                                                Encuentra los mejores precios
+                                            </h2>
+                                            <h2 class=" text-accent-content ml-4 mt-0 text-2xl font-bold md:text-4xl
+                                            lg:text-5xl">
+                                            Revista de ofertas
+                                            </h2>
+                                            <button type="button" class="
+                                                        btn btn-accent
+                                                        !absolute right-2 bottom-8 sm:right-8
+                                                        ">
+                                                Ver Todos
+                                                <svg aria-hidden="true" focusable="false" data-prefix="fas"
+                                                    data-icon="arrow-right" class="w-4" role="img"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                    <path fill="currentColor"
+                                                        d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z">
+                                                    </path>
+                                                </svg>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- product list -->
+                                <div class="px-4 container relative flex flex-col items-center h-full">
+                                    <!-- api total results -->
+                                    <div class="w-full my-4 text-sm text-center sm:text-left">
+                                        <span class="opacity-50">
+                                            1000 productos
+                                        </span>
+                                    </div>
+                                    <!-- products grid-->
+                                    <div class="w-full grid 
+                                            grid-cols-2
+                                            sm:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] 
+                                            gap-4 ">
+                                        <!-- product card -->
+                                        <article class="card-product">
+                                            <!-- product image -->
+                                            <figure class="relative m-0">
+                                                <div class="card-product_product-image-wrapper">
+                                                    <span>
+                                                        <img alt="" src="/assets/products/jabon-liquido.webp"
+                                                            class="card-product_product-image">
+                                                    </span>
+                                                </div>
+                                            </figure>
+                                            <!-- product info -->
+                                            <div class="card-product_product-info">
+                                                <div class="flex flex-col justify-between items-start">
+                                                    <span class="font-bold truncate">
+                                                        POLYANA
+                                                    </span>
+                                                    <span class="text-sm">
+                                                        Jabon Liquido para Manos Pink Doypack 220ml
+                                                    </span>
+                                                    <span class="text-xs opacity-50">
+                                                        Unidades mínimas: 1
+                                                    </span>
+                                                    <span class="text-xs opacity-50 text-warning-content">
+                                                        Stock disponible: 3
+                                                    </span>
+                                                </div>
+                                                <footer class="w-full flex items-end justify-center">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-drawer-target="product-detail-drawer"
+                                                        data-drawer-toggle="product-detail-drawer"
+                                                        data-drawer-placement="bottom"
+                                                        aria-controls="product-detail-drawer">
+                                                        Ver precio
+                                                    </button>
+                                                </footer>
+                                            </div>
+                                        </article>
+                                        <!-- drawer component -->
+                                        <div id="product-detail-drawer" class="
+                                                    z-999
+                                                    fixed bottom-0 left-0 right-0 
+                                                    md:mx-auto
+
+                                                    w-full h-auto
+                                                    md:max-w-screen-sm
+
+                                                    bg-white rounded-t-4xl md:rounded-4xl
+                                                    
+                                                    overflow-y-auto
+                                                    transition-transform 
+                                                    transform-none
+                                                    translate-y-full md:-translate-y-[70%]
+                                            " tabindex="-1" aria-labelledby="product-detail">
+                                            <button type="button" data-drawer-hide="product-detail-drawer"
+                                                aria-controls="product-detail-drawer"
+                                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 
+                                                        absolute top-2.5 end-2.5 inline-flex items-center justify-center z-999">
+                                                <svg class="w-3 h-3" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                </svg>
+                                                <span class="sr-only">Close menu</span>
+                                            </button>
+                                            <!-- product images carousel -->
+                                            <div id="animation-carousel" class="relative w-full" data-carousel="static">
+                                                <!-- Carousel wrapper -->
+                                                <div class="relative h-56 overflow-hidden rounded-lg">
+                                                    <!-- Item 1 -->
+                                                    <div class="hidden duration-200 ease-linear" data-carousel-item>
+                                                        <img src="/assets/products/jabon-liquido.webp"
+                                                            class="absolute block w-[60%] h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                    <!-- Item 2 -->
+                                                    <div class="hidden duration-200 ease-linear" data-carousel-item>
+                                                        <img src="/assets/products/jabon-liquido.webp"
+                                                            class="absolute block w-[60%] h-auto  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                    <!-- Item 3 -->
+                                                    <div class="hidden duration-200 ease-linear"
+                                                        data-carousel-item="active">
+                                                        <img src="/assets/products/jabon-liquido.webp"
+                                                            class="absolute block w-[60%] h-auto  -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                </div>
+                                                <!-- Slider controls -->
+                                                <button type="button"
+                                                    class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                                    data-carousel-prev>
+                                                    <span
+                                                        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                                        <svg class="w-4 h-4 text-white rtl:rotate-180"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 6 10">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="M5 1 1 5l4 4" />
+                                                        </svg>
+                                                        <span class="sr-only">Previous</span>
+                                                    </span>
+                                                </button>
+                                                <button type="button"
+                                                    class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                                    data-carousel-next>
+                                                    <span
+                                                        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                                        <svg class="w-4 h-4 text-white rtl:rotate-180"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 6 10">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="m1 9 4-4-4-4" />
+                                                        </svg>
+                                                        <span class="sr-only">Next</span>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <!-- product info -->
+                                            <div class="card-product_product-info">
+                                                <div class="flex flex-col justify-between items-start">
+                                                    <span class="font-bold truncate">
+                                                        POLYANA
+                                                    </span>
+                                                    <span class="text-sm">
+                                                        Jabon Liquido para Manos Pink Doypack 220ml
+                                                    </span>
+                                                    <span class="text-xs opacity-50">
+                                                        Unidades mínimas: 1
+                                                    </span>
+                                                    <span class="text-xs opacity-50 text-warning-content">
+                                                        Stock disponible: 3
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <!-- footer (& separator) -->
+                                            <footer class="border-t border-neutral-focus h-[6rem] w-full
+                                                    py-4
+                                                    flex items-center justify-center
+                                                    ">
+                                                <button type="button"
+                                                    class="btn btn-secondary mx-auto max-w-[12rem] max-h-[2.2rem]"
+                                                    data-drawer-target="product-detail-drawer"
+                                                    data-drawer-hide="product-detail-drawer"
+                                                    data-drawer-placement="bottom"
+                                                    aria-controls="product-detail-drawer">
+                                                    Ver precio
+                                                </button>
+                                            </footer>
+                                        </div>
+                                    </div>
+                                    <!-- pagination -->
+                                    <footer class="mt-10 flex justify-center items-center gap-2">
+                                        <div class="flex gap-1 justify-between items-center">
+                                            <a class="!rounded-full btn-neutral
+                                                        py-2 pe-4 ps-2 flex items-center 
+                                                        font-bold text-xs sm:text-sm" href="/">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"
+                                                    viewBox="0 0 24 24" fill="none" stroke="#8899a4" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="arcs">
+                                                    <path d="M15 18l-6-6 6-6"></path>
+                                                </svg>
+                                                <span class="ml-2">
+                                                    Anterior
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="flex gap-1 justify-between items-center">
+                                            <a class="
+                                                btn btn-accent !rounded-full
+                                                text-center font-bold text-xs sm:text-sm w-8
+                                                grid justify-center" href="/">
+                                                1
+                                            </a>
+                                        </div>
+                                        <span class="mx-2 font-bold opacity-30">
+                                            de
+                                        </span>
+                                        <div class="flex gap-1 justify-between items-center">
+                                            <a class="
+                                                    
+                                                    text-center font-semibold text-xs sm:text-sm w-8
+                                                    grid justify-center" href="/">
+                                                1000
+                                            </a>
+                                        </div>
+                                        <div class="flex gap-1 justify-between items-center">
+                                            <a class="!rounded-full btn-neutral
+                                                    py-2 ps-4 pe-2 flex items-center 
+                                                    font-bold text-xs sm:text-sm" href="/">
+                                                <span>
+                                                    Siguiente
+                                                </span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"
+                                                    viewBox="0 0 24 24" fill="none" stroke="#8899a4" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="arcs">
+                                                    <path d="M9 18l6-6-6-6"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </footer>
+                                </div>
+                            </section>
+                        </section>
+                    </div>
+                </div>
+            </main>
+            <!-- pc screen page footer -->
+            <footer class="
+                footer
+                hidden md:flex justify-between 
+                min-h-[6rem] flex flex-col 
+                mt-8 py-8 md:px-4
+                bg-neutral text-neutral-content
+                ">
+                <!-- logo & FAQ -->
+                <div class="
+                m-auto flex flex-col items-center 
+                sm:container sm:flex-row sm:justify-between
+                2xl:max-w-screen-xl
+                ">
+                    <div class="">
+                        <a class="btn btn-ghost h-[50px] gap-0 px-0 text-xl font-bold normal-case sm:px-1" href="/">
+                            <img height="50" width="200" src="/assets/logo.png" alt=""
+                                class="m-0 h-full w-auto object-contain" />
+                        </a>
+                    </div>
+                    <div class="flex items-center justify-end py-2 md:justify-between">
+                        <a class="rounded-2xl btn-neutral btn-link flex items-center w-min md:w-auto text-neutral-content"
+                            href="/">
+                            Preguntas frecuentes
+                        </a>
+                    </div>
+                </div>
+                <!-- contact info -->
+                <div class="
+                        m-auto flex flex-col items-center
+                        sm:container sm:flex-row sm:justify-between 
+                        2xl:max-w-screen-xl
+                    ">
+                    <div class="flex flex-col justify-between gap-1 px-4">
+                        <span>
+                            Mi WhatsApp
+                        </span>
+                        <span>
+                            Mi teléfono
+                        </span>
+                        <span>
+                            Mi email
+                        </span>
+                        <span>
+                            Mi dirección
+                        </span>
+                    </div>
+                    <div class="flex justify-between items-center gap-2 px-4">
+                        <span class="pr-2">
+                            Síguenos
+                        </span>
+                        <a class="btn normal-case gap-0 !rounded-full btn-accent btn-sm w-8 h-8 px-0" target="_blank"
+                            href="/">
+                            <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram"
+                                class="svg-inline--fa fa-instagram " role="img" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 448 512" width="16">
+                                <path fill="currentColor"
+                                    d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a class="btn normal-case gap-0 !rounded-full btn-accent btn-sm w-8 h-8 px-0" target="_blank"
+                            href="/">
+                            <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f"
+                                class="svg-inline--fa fa-facebook-f " role="img" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 320 512" width="16">
+                                <path fill="currentColor"
+                                    d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </footer>
+            <!-- whatsapp button  -->
+            <div class="
+                fixed right-7 z-20 
+                lg:bottom-10 cursor-pointer bottom-32 translate-x-0
+                transition duration-200 ease-out
+            ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="scale-[1.5] transform">
+                    <g data-name="Group 4085" transform="translate(-185 -506)">
+                        <circle cx="15" cy="15" r="15" fill="#71d227" data-name="Ellipse 521"
+                            transform="translate(185 506)">
+                        </circle>
+                        <path fill="#fff"
+                            d="M204.224 522.83c-.231-.115-1.358-.666-1.567-.742s-.363-.115-.517.115-.592.741-.725.893-.268.161-.5.058a6.2 6.2 0 0 1-1.846-1.141 7 7 0 0 1-1.275-1.59c-.134-.231-.015-.357.1-.473s.231-.265.347-.4a2 2 0 0 0 .228-.381.42.42 0 0 0-.019-.4c-.058-.115-.516-1.245-.708-1.695s-.374-.394-.516-.394-.285-.012-.439-.012a.87.87 0 0 0-.612.276 2.57 2.57 0 0 0-.8 1.9 4.5 4.5 0 0 0 .934 2.362 10.25 10.25 0 0 0 3.919 3.446c.549.231.976.369 1.309.483a3.2 3.2 0 0 0 1.444.093 2.37 2.37 0 0 0 1.549-1.1 1.9 1.9 0 0 0 .138-1.095c-.057-.1-.207-.161-.438-.265m-4.184 5.724h-.012a7.7 7.7 0 0 1-3.884-1.06l-.277-.164-2.881.749.772-2.8-.185-.29a7.62 7.62 0 0 1 11.869-9.4 7.52 7.52 0 0 1 2.235 5.371 7.63 7.63 0 0 1-7.634 7.6m6.497-14.068a9.33 9.33 0 0 0-6.512-2.65 9.135 9.135 0 0 0-7.955 13.706l-1.3 4.734 4.867-1.269a9.3 9.3 0 0 0 4.387 1.112 9.174 9.174 0 0 0 9.181-9.14 9.06 9.06 0 0 0-2.68-6.463"
+                            data-name="Icon simple-whatsapp">
+                        </path>
+                    </g>
+                </svg>
+            </div>
+            <!-- mobile nav nemu-->
+            <ul class="
+                md:hidden
+                bg-base-100 
+                fixed z-50 flex min-h-[4rem] w-full gap-0
+                bottom-0  
+            ">
+                <!-- search (active state: btn-accent) -->
+                <li class="flex grow basis-0 items-center justify-end sm:grow">
+                    <a class="btn-accent 
+    flex h-full grow flex-col flex-nowrap items-center justify-center gap-1                                rounded-none 
+    text-xs font-bold 
+    sm:flex-row sm:gap-2 sm:text-sm" href="/">
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="magnifying-glass"
+                            class="h-[1.2rem]" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path fill="currentColor"
+                                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z">
+                            </path>
+                        </svg>
+                        <span>
+                            Explorar
+                        </span>
+                    </a>
+                </li>
+                <!-- cart -->
+                <li class="flex grow basis-0 items-center justify-center sm:grow">
+                    <a class="flex h-full grow flex-col flex-nowrap items-center justify-center gap-1 rounded-none text-xs font-bold sm:flex-row sm:gap-2 sm:text-sm btn-ghost"
+                        href="/">
+                        <svg id='Delivery_Handcart_24' width='20' height='20' viewBox='0 0 24 24'
+                            xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+                            <rect width='24' height='24' stroke='none' fill='#000000' opacity='0' />
+                            <g transform="matrix(1 0 0 1 12 12)">
+                                <path
+                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"
+                                    transform=" translate(-11.5, -12)"
+                                    d="M 3 2 C 2.639364083422431 1.9948997104545152 2.303918635428393 2.184375296169332 2.122112278513483 2.495872849714331 C 1.9403059215985725 2.8073704032593296 1.9403059215985727 3.1926295967406713 2.1221122785134834 3.50412715028567 C 2.303918635428394 3.815624703830669 2.6393640834224317 4.005100289545485 3.000000000000001 4 L 4 4 L 4 14 C 4 15.64497 5.3550302 17 7 17 L 20 17 C 20.360635916577568 17.005100289545485 20.696081364571608 16.815624703830668 20.877887721486516 16.50412715028567 C 21.059694078401428 16.19262959674067 21.059694078401428 15.80737040325933 20.877887721486516 15.495872849714331 C 20.696081364571608 15.184375296169332 20.360635916577568 14.994899710454515 20 15 L 7 15 C 6.4349698 15 6 14.56503 6 14 L 6 4 C 6 2.9069372 5.0930628 2 4 2 L 3 2 z M 10 4 C 8.895 4 8 4.895 8 6 L 8 11 C 8 12.105 8.895 13 10 13 L 18 13 C 19.105 13 20 12.105 20 11 L 20 6 C 20 4.895 19.105 4 18 4 L 10 4 z M 13 6 L 15 6 C 15.552 6 16 6.448 16 7 C 16 7.552 15.552 8 15 8 L 13 8 C 12.448 8 12 7.552 12 7 C 12 6.448 12.448 6 13 6 z M 8 18 C 6.8954305003384135 18 6 18.895430500338414 6 20 C 6 21.104569499661586 6.8954305003384135 22 8 22 C 9.104569499661586 22 10 21.104569499661586 10 20 C 10 18.895430500338414 9.104569499661586 18 8 18 z M 18 18 C 16.895430500338414 18 16 18.895430500338414 16 20 C 16 21.104569499661586 16.895430500338414 22 18 22 C 19.104569499661586 22 20 21.104569499661586 20 20 C 20 18.895430500338414 19.104569499661586 18 18 18 z"
+                                    stroke-linecap="round" />
+                            </g>
+                        </svg>
+                        <span>
+                            Carrito
+                        </span>
+                    </a>
+                </li>
+                <!-- orders -->
+                <li class="flex grow basis-0 items-center justify-center sm:grow">
+                    <a class="flex h-full grow flex-col flex-nowrap items-center justify-center gap-1 rounded-none text-xs font-bold sm:flex-row sm:gap-2 sm:text-sm btn-ghost"
+                        href="/">
+                        <svg id='truck_24' width='22' height='22' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'
+                            xmlns:xlink='http://www.w3.org/1999/xlink'>
+                            <rect width='24' height='24' stroke='none' fill='#000000' opacity='0' />
+                            <g transform="matrix(1 0 0 1 12 12)">
+                                <g style="">
+                                    <g transform="matrix(1 0 0 1 0 0)">
+                                        <path
+                                            style="stroke: none; stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"
+                                            transform=" translate(-12, -12)" d="M 0 0 L 24 0 L 24 24 L 0 24 z"
+                                            stroke-linecap="round" />
+                                    </g>
+                                    <g transform="matrix(1 0 0 1 -5 5)">
+                                        <circle
+                                            style="stroke: rgb(33,33,33); stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"
+                                            cx="0" cy="0" r="2" />
+                                    </g>
+                                    <g transform="matrix(1 0 0 1 5 5)">
+                                        <circle
+                                            style="stroke: rgb(33,33,33); stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"
+                                            cx="0" cy="0" r="2" />
+                                    </g>
+                                    <g transform="matrix(1 0 0 1 0 -1)">
+                                        <path
+                                            style="stroke: rgb(33,33,33); stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"
+                                            transform=" translate(-12, -11)"
+                                            d="M 5 17 L 3 17 L 3 6 C 3 5.447715250169207 3.4477152501692068 5 4 5 L 13 5 L 13 17 M 9 17 L 15 17 M 19 17 L 21 17 L 21 11 L 13 11 M 13 6 L 18 6 L 21 11"
+                                            stroke-linecap="round" />
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        <span>
+                            Pedidos
+                        </span>
+                    </a>
+                </li>
+                <!-- profile -->
+                <li class="flex grow basis-0 items-center justify-center sm:grow">
+                    <a class="flex h-full grow flex-col flex-nowrap items-center justify-center gap-1 rounded-none text-xs font-bold sm:flex-row sm:gap-2 sm:text-sm btn-ghost"
+                        href="/">
+                        <svg id='Male_User_24' width='22' height='22' viewBox='0 0 24 24'
+                            xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+                            <rect width='24' height='24' stroke='none' fill='#000000' opacity='0' />
+                            <g transform="matrix(0.77 0 0 0.77 12 12)">
+                                <path
+                                    style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"
+                                    transform=" translate(-16, -16)"
+                                    d="M 16 3 C 8.832031 3 3 8.832031 3 16 C 3 23.167969 8.832031 29 16 29 C 23.167969 29 29 23.167969 29 16 C 29 8.832031 23.167969 3 16 3 Z M 16 5 C 22.085938 5 27 9.914063 27 16 C 27 22.085938 22.085938 27 16 27 C 9.914063 27 5 22.085938 5 16 C 5 9.914063 9.914063 5 16 5 Z M 16 8 C 13.25 8 11 10.25 11 13 C 11 14.515625 11.707031 15.863281 12.78125 16.78125 C 10.53125 17.949219 9 20.300781 9 23 L 11 23 C 11 20.226563 13.226563 18 16 18 C 18.773438 18 21 20.226563 21 23 L 23 23 C 23 20.300781 21.46875 17.949219 19.21875 16.78125 C 20.292969 15.863281 21 14.515625 21 13 C 21 10.25 18.75 8 16 8 Z M 16 10 C 17.667969 10 19 11.332031 19 13 C 19 14.667969 17.667969 16 16 16 C 14.332031 16 13 14.667969 13 13 C 13 11.332031 14.332031 10 16 10 Z"
+                                    stroke-linecap="round" />
+                            </g>
+                        </svg>
+                        <span>
+                            Ingresar
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+</body>
+
+</html>
