@@ -1,1 +1,4 @@
 .vscode
+
+## No tailwind.config file is needed using TailwindCSS v4 - Included just for tailwind intellisense to work
+tailwind.config.ts 
