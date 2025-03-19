@@ -1806,7 +1806,8 @@
         h-screen
         p-4 overflow-y-hidden
         transition-transform -translate-x-full
-        bg-neutral" style="width: 40rem; max-width: 100%;" tabindex="-1" aria-labelledby="drawer-left-label">
+        bg-[url('/assets/pexels-leticia-alvares-1805702-31145641.jpg')] bg-cover bg-center"
+        style="width: 40rem; max-width: 100%;" tabindex="-1" aria-labelledby="drawer-left-label">
         <a href="/" class="
             flex flex-col items-center justify-center
             btn-ghost px-4
@@ -1828,8 +1829,8 @@
         <!-- form -->
         <section class=" flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
             <div class="
-                    w-full bg-white rounded-lg
-                    shadow md:mt-0 sm:max-w-lg xl:p-0">
+                            w-full bg-white rounded-lg
+                            shadow md:mt-0 sm:max-w-lg xl:p-0">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-xl font-bold text-neutral-content leading-tight tracking-tight md:text-2xl">
                         Iniciar sesión
@@ -1840,22 +1841,25 @@
                                 Email
                             </label>
                             <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-neutral-content rounded-lg
-                                    focus:ring-base-500 focus:border-base-500
-                                    block w-full p-2.5" placeholder="mi_emaill@email.com" required="">
+                                            focus:ring-base-500 focus:border-base-500
+                                            block w-full p-2.5" placeholder="mi_emaill@email.com" required="">
                         </div>
                         <div>
                             <label for="password" class="block mb-2 text-sm font-medium  text-neutral-content">
                                 Contraseña
                             </label>
                             <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-neutral-content rounded-lg
-                                focus:ring-base-500 focus:border-base-500
-                                block w-full p-2.5" required="">
+                                        focus:ring-base-500 focus:border-base-500
+                                        block w-full p-2.5" required="">
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                                 <div class="flex items-center h-5">
-                                    <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 cursor-pointer
-                                        focus:ring-1" required="">
+                                    <input id="remember" aria-describedby="remember" type="checkbox" class="
+                                                w-4 h-4 border border-gray-300 rounded bg-gray-50
+                                                cursor-pointer
+                                                checked:bg-slate-600 outline-none focus:ring-0
+                                                ">
                                 </div>
                                 <div class="ml-3 text-sm">
                                     <label for="remember" class="text-base-500 cursor-pointer">
@@ -1863,19 +1867,20 @@
                                     </label>
                                 </div>
                             </div>
-                            <a href="#" class="text-sm font-medium text-base-500 hover:underline">
+                            <a href="#" class="text-sm font-medium text-neutral-700 hover:underline">
                                 Olvidé mi contraseña
                             </a>
                         </div>
-                        <button type="submit" class="w-full text-neutral-content bg-base-200 hover:bg-base-700
-                                focus:ring-2 focus:outline-none font-medium rounded-lg cursor-pointer
-                                text-sm px-5 py-2.5 text-center">
+                        <button type="submit" class="w-full text-neutral-content bg-neutral-200 hover:bg-neutral-focus
+                                        focus:ring-1 focus:outline-none font-medium rounded-lg cursor-pointer
+                                        text-sm px-5 py-2.5 text-center
+                                        transition-colors duration-200">
                             Iniciar sesión
                         </button>
                         <p class="text-sm font-light text-gray-500">
                             No tengo una cuenta todavía
                             <span class="ps-2">
-                                <a href="#" class="font-medium text-base-500 hover:underline">
+                                <a href="#" class="font-medium text-neutral-700 hover:underline">
                                     Crear cuenta
                                 </a>
                             </span>
