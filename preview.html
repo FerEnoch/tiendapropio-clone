@@ -3,12 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>clon-maxiofertas.tiendapropio</title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
     <style type="text/tailwindcss">
-
         body {
         margin: 0;
         padding: 0;
@@ -59,39 +58,43 @@
     
     .btn-neutral {
         @apply bg-neutral text-neutral-content hover:bg-neutral-focus
+            cursor-pointer
             transition duration-200 ease-out;
     }
     
     .btn-accent {
         @apply bg-accent text-accent-content hover:bg-accent-focus
+            cursor-pointer
             transition duration-200 ease-out;
     }
     
     .btn-secondary {
         @apply bg-secondary text-secondary-content hover:bg-secondary-focus
-         transition duration-200 ease-out;
+            cursor-pointer
+            transition duration-200 ease-out;
         @apply w-full grid content-center;
     }
     
     .btn-ghost {
         @apply bg-transparent text-base-content hover:bg-neutral-focus
-         transition duration-200 ease-out;
+            cursor-pointer
+            transition duration-200 ease-out;
     }
     
     .header {
-        @apply sticky top-0 w-full py-0 z-10
+        @apply sticky top-0 w-full py-0 z-20
                 flex justify-center items-center md:justify-between 
                 bg-base-100 text-base-content;
     }
     
     .header_wrapper{
         @apply my-4 md:my-0 h-full w-auto mx-auto pe-4 
-                flex justify-between items-center 
+                flex justify-center lg:justify-between items-center 
                 md:container 2xl:max-w-screen-xl;
     }
     
     .header_navber {
-        @apply hidden md:flex justify-end items-center w-full h-full;
+        @apply hidden lg:flex justify-end items-center w-full h-full;
     }
     
     .header_navber_links {
@@ -127,7 +130,8 @@
     
     .card-product {
         content-visibility: auto;
-        @apply w-full h-full flex flex-col justify-between items-start gap-4
+        @apply w-full max-w-[20rem] h-full
+            flex flex-col justify-between items-start gap-4
             bg-white rounded-2xl
             shadow-xl hover:shadow-2xl hover:scale-[1.03] 
             cursor-pointer transition;
@@ -156,15 +160,15 @@
     }
     
     .card-product_product-info {
-        @apply h-full p-0 px-4 pb-4 
+        @apply h-full py-4 px-4
             flex flex-col justify-between items-start gap-4;
     }
     
     .category-list {
-        @apply py-2 md:mt-0 md:ps-4
-            flex items-stretch justify-start md:flex-col space-x-2 md:space-x-0 md:space-y-2
-            overflow-y-visible overflow-x-auto md:overflow-x-visible 
-            md:w-44 lg:w-48;
+        @apply py-2 lg:mt-0 lg:ps-4
+            flex items-stretch justify-start lg:flex-col space-x-2 lg:space-x-0 lg:space-y-2
+            overflow-y-visible overflow-x-auto lg:overflow-x-visible 
+            lg:w-44 lg:w-48;
     }
     
     .category-list_category-item {
@@ -181,15 +185,15 @@
 <body>
     <div class="bg-base-200 flex flex-col subpixel-antialiased">
         <!-- header and main layout-->
-        <div class="layout relative gap-4 pb-16 sm:gap-10 sm:pb-0">
+        <div class="min-h-screen relative">
             <!-- header -->
             <header class="header">
                 <!-- wrapper -->
                 <div class="header_wrapper">
                     <!-- logo -->
                     <a href="/" class="
-                        btn-ghost 
-                        h-[3rem] gap-0 px-0 text-xl font-bold normal-case sm:px-4
+                        btn-ghost
+                        h-[5rem] w-auto px-0 sm:px-4 py-2 lg:py-0
                         rounded-2xl
                     ">
                         <img height="50" width="200" src="/assets/logo.png" alt=""
@@ -200,7 +204,7 @@
                         <ul class="header_navber_links">
                             <!-- search (active state: btn-accent) -->
                             <li class="header_navber_link-item">
-                                <a class="btn-accent header_navber_item_button">
+                                <button class="btn-accent header_navber_item_button">
                                     <svg aria-hidden="true" focusable="false" data-prefix="fas"
                                         data-icon="magnifying-glass" class="h-[1.2rem]" role="img"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -211,11 +215,11 @@
                                     <span>
                                         Explorar
                                     </span>
-                                </a>
+                                </button>
                             </li>
                             <!-- cart -->
                             <li class="header_navber_link-item">
-                                <a class="btn-ghost header_navber_item_button">
+                                <button class="btn-ghost header_navber_item_button">
                                     <svg id='Delivery_Handcart_24' width='20' height='20' viewBox='0 0 24 24'
                                         xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
                                         <rect width='24' height='24' stroke='none' fill='#000000' opacity='0' />
@@ -230,16 +234,16 @@
                                     <span>
                                         Carrito
                                     </span>
-                                </a>
+                                </button>
                             </li>
                             <!-- orders -->
                             <li class="header_navber_link-item">
-                                <a class="btn-ghost header_navber_item_button">
+                                <button class="btn-ghost header_navber_item_button">
                                     <svg id='truck_24' width='22' height='22' viewBox='0 0 24 24'
                                         xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
                                         <rect width='24' height='24' stroke='none' fill='#000000' opacity='0' />
                                         <g transform="matrix(1 0 0 1 12 12)">
-                                            <g style="">
+                                            <g>
                                                 <g transform="matrix(1 0 0 1 0 0)">
                                                     <path
                                                         style="stroke: none; stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"
@@ -269,11 +273,13 @@
                                     <span>
                                         Pedidos
                                     </span>
-                                </a>
+                                </button>
                             </li>
                             <!-- profile -->
                             <li class="header_navber_link-item">
-                                <a class="btn-ghost header_navber_item_button">
+                                <button class="btn-ghost header_navber_item_button" data-drawer-target="login-drawer"
+                                    data-drawer-toggle="login-drawer" data-drawer-placement="left"
+                                    aria-controls="login-drawer">
                                     <svg id='Male_User_24' width='22' height='22' viewBox='0 0 24 24'
                                         xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
                                         <rect width='24' height='24' stroke='none' fill='#000000' opacity='0' />
@@ -288,7 +294,7 @@
                                     <span>
                                         Ingresar
                                     </span>
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </section>
@@ -301,8 +307,8 @@
                     <div class="container">
                         <!-- products search section -->
                         <section class="search-product-section">
-                            <div class="hidden grow basis-0 md:block">
-                                <h1 class="m-0 text-2xl font-semibold opacity-50 lg:text-4xl">
+                            <div class="hidden grow basis-0 lg:block">
+                                <h1 class="m-0 text-3xl font-semibold opacity-50 xl:text-5xl">
                                     Encuentra lo que necesitas
                                 </h1>
                             </div>
@@ -333,11 +339,11 @@
                             </div>
                         </section>
                         <!-- categories & products -->
-                        <section class="flex w-full flex-col justify-between md:flex-row md:gap-8">
+                        <section class="flex w-full flex-col justify-between lg:flex-row lg:gap-8">
                             <!-- categories section -->
                             <section class="flex flex-col">
                                 <!-- category list title -->
-                                <div class="m-4 hidden cursor-pointer items-center justify-between md:flex">
+                                <div class="m-4 hidden cursor-pointer items-center justify-between lg:flex">
                                     <span class="text-sm opacity-50">
                                         Categorías
                                     </span>
@@ -347,7 +353,7 @@
                                 </div>
                                 <!-- category list -->
                                 <ul class="category-list">
-                                    <!-- category -->
+                                    <!-- category item -->
                                     <li class="category-list_category-item">
                                         <button class="category-list_category-item_button btn btn-accent">
                                             <a href="/" class="flex w-full items-center justify-between gap-1">
@@ -372,7 +378,7 @@
                                             </a>
                                         </button>
                                     </li>
-                                    <!-- category -->
+                                    <!-- category item -->
                                     <li class="category-list_category-item">
                                         <button class="category-list_category-item_button btn btn-neutral">
                                             <a href="/" class="flex w-full items-center justify-between gap-1">
@@ -391,7 +397,7 @@
                                             </a>
                                         </button>
                                     </li>
-                                    <!-- category -->
+                                    <!-- category item -->
                                     <li class="category-list_category-item">
                                         <button class="category-list_category-item_button btn btn-neutral">
                                             <a href="/" class="flex w-full items-center justify-between gap-1">
@@ -405,7 +411,7 @@
                                             </a>
                                         </button>
                                     </li>
-                                    <!-- category -->
+                                    <!-- category item -->
                                     <li class="category-list_category-item">
                                         <button class="category-list_category-item_button btn btn-neutral">
                                             <a href="/" class="flex w-full items-center justify-between gap-1">
@@ -419,7 +425,7 @@
                                             </a>
                                         </button>
                                     </li>
-                                    <!-- category -->
+                                    <!-- category item -->
                                     <li class="category-list_category-item">
                                         <button class="category-list_category-item_button btn btn-neutral">
                                             <a href="/" class="flex w-full items-center justify-between gap-1">
@@ -433,7 +439,7 @@
                                             </a>
                                         </button>
                                     </li>
-                                    <!-- category -->
+                                    <!-- category item -->
                                     <li class="category-list_category-item">
                                         <button class="category-list_category-item_button btn btn-neutral">
                                             <a href="/" class="flex w-full items-center justify-between gap-1">
@@ -447,7 +453,7 @@
                                             </a>
                                         </button>
                                     </li>
-                                    <!-- category -->
+                                    <!-- category item -->
                                     <li class="category-list_category-item">
                                         <button class="category-list_category-item_button btn btn-neutral">
                                             <a href="/" class="flex w-full items-center justify-between gap-1">
@@ -461,7 +467,7 @@
                                             </a>
                                         </button>
                                     </li>
-                                    <!-- category -->
+                                    <!-- category item -->
                                     <li class="category-list_category-item">
                                         <button class="category-list_category-item_button btn btn-neutral">
                                             <a href="/" class="flex w-full items-center justify-between gap-1">
@@ -475,7 +481,7 @@
                                             </a>
                                         </button>
                                     </li>
-                                    <!-- category -->
+                                    <!-- category item -->
                                     <li class="category-list_category-item">
                                         <button class="category-list_category-item_button btn btn-neutral">
                                             <a href="/" class="flex w-full items-center justify-between gap-1">
@@ -489,7 +495,7 @@
                                             </a>
                                         </button>
                                     </li>
-                                    <!-- category -->
+                                    <!-- category item -->
                                     <li class="category-list_category-item">
                                         <button class="category-list_category-item_button btn btn-neutral">
                                             <a href="/" class="flex w-full items-center justify-between gap-1">
@@ -503,7 +509,7 @@
                                             </a>
                                         </button>
                                     </li>
-                                    <!-- category -->
+                                    <!-- category item -->
                                     <li class="category-list_category-item">
                                         <button class="category-list_category-item_button btn btn-neutral">
                                             <a href="/" class="flex w-full items-center justify-between gap-1">
@@ -517,7 +523,7 @@
                                             </a>
                                         </button>
                                     </li>
-                                    <!-- category -->
+                                    <!-- category item -->
                                     <li class="category-list_category-item">
                                         <button class="category-list_category-item_button btn btn-neutral">
                                             <a href="/" class="flex w-full items-center justify-between gap-1">
@@ -534,25 +540,29 @@
                                 </ul>
                             </section>
                             <!-- products main section -->
-                            <section class="flex w-full flex-col justify-start md:gap-8">
+                            <section class="flex w-full flex-col justify-start md:gap-6">
                                 <!-- card sponsored -->
                                 <div
-                                    class="w-full flex flex-row gap-4 rounded-2xl mt-4 overflow-y-hidden px-4 overflow-x-auto">
+                                    class="w-full h-full flex flex-row gap-4 rounded-2xl mt-4 px-4 overflow-x-hidden overflow-y-hidden">
                                     <div
-                                        class="w-full flex-[0_0_auto]  cursor-pointer transition hover:scale-[1.03] hover:shadow-2xl">
-                                        <a class="flex flex-col relative items-center !bg-accent w-full h-20 relative flex h-[6.8rem] w-full flex-col !items-start justify-start rounded-2xl"
-                                            href="/"">
-                            <h2 class=" lg:text-md text-accent-content z-10 my-0 ml-4 mt-4 text-xs font-semibold
-                                            uppercase sm:mt-2 xl:text-lg">
-                                            Encuentra los mejores precios
+                                        class="w-full h-full flex-[0_0_auto] cursor-pointer transition hover:scale-[1.03] hover:shadow-2xl">
+                                        <a class="
+                                            relative 
+                                            h-[6.8rem] w-full
+                                            flex flex-col items-start justify-start 
+                                            !bg-accent
+                                            rounded-2xl" href="/"">
+                                            <h2 class=" font-semibold text-accent-content text-xs lg:text-md uppercase
+                                            my-0 ml-4 mt-4 sm:mt-2 xl:text-lg z-10 ">
+                                                Encuentra los mejores precios
                                             </h2>
-                                            <h2
-                                                class="text-accent-content ml-4 mt-0 w-1/2 text-2xl font-bold md:text-3xl lg:text-4xl xl:text-5xl">
-                                                Revista de ofertas
+                                            <h2 class=" text-accent-content ml-4 mt-0 text-2xl font-bold md:text-4xl
+                                            lg:text-5xl">
+                                            Revista de ofertas
                                             </h2>
                                             <button type="button" class="
                                                         btn btn-accent
-                                                        !absolute right-2 mt-8 sm:right-8
+                                                        !absolute right-2 bottom-8 sm:right-8
                                                         ">
                                                 Ver Todos
                                                 <svg aria-hidden="true" focusable="false" data-prefix="fas"
@@ -567,474 +577,1017 @@
                                     </div>
                                 </div>
                                 <!-- product list -->
-                                <div class="px-4">
-                                    <div class="container relative flex flex-col items-center h-full">
-                                        <!-- api total results -->
-                                        <div class="w-full my-4 text-sm text-center sm:text-left">
-                                            <span class="opacity-50">
-                                                1000 productos
-                                            </span>
-                                        </div>
-                                        <div class="w-full grid 
-                                            grid-cols-2
-                                            sm:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] 
-                                            gap-4 ">
-                                            <!-- product card -->
-                                            <article class="card-product">
-                                                <!-- product image -->
-                                                <figure class="relative m-0">
-                                                    <div class="card-product_product-image-wrapper">
-                                                        <span>
-                                                            <img alt="" src="/assets/products/jabon-liquido.webp"
-                                                                class="card-product_product-image">
-                                                        </span>
-                                                    </div>
-                                                </figure>
-                                                <!-- product info -->
-                                                <div class="card-product_product-info">
-                                                    <div class="flex flex-col justify-between items-start">
-                                                        <span class="font-bold truncate">
-                                                            POLYANA
-                                                        </span>
-                                                        <span class="text-sm">
-                                                            Jabon Liquido para Manos Pink Doypack 220ml
-                                                        </span>
-                                                        <span class="text-xs opacity-50">
-                                                            Unidades mínimas: 1
-                                                        </span>
-                                                        <span class="text-xs opacity-50 text-warning-content">
-                                                            Stock disponible: 3
-                                                        </span>
-                                                    </div>
-                                                    <footer class="w-full flex items-end justify-center">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-drawer-target="product-detail-drawer"
-                                                            data-drawer-toggle="product-detail-drawer"
-                                                            data-drawer-placement="bottom"
-                                                            aria-controls="product-detail-drawer">
-                                                            Ver precio
-                                                        </button>
-                                                    </footer>
+                                <div class="px-4 container relative flex flex-col items-center h-full">
+                                    <!-- api total results -->
+                                    <div class="my-4 text-sm opacity-50 md:self-start md:ps-2">
+                                        <span>
+                                            1000 productos
+                                        </span>
+                                    </div>
+                                    <!-- products grid-->
+                                    <div class="
+                                        w-full grid items-center justify-items-center
+                                        grid-cols-[repeat(2,minmax(120px,1fr))]
+                                        lg:grid-cols-[repeat(auto-fill,minmax(160px,1fr))]
+                                        gap-x-2 gap-y-4 lg:gap-x-4">
+                                        <!-- product card -->
+                                        <article class="card-product">
+                                            <!-- product image -->
+                                            <figure class="relative m-0">
+                                                <div class="card-product_product-image-wrapper">
+                                                    <span>
+                                                        <img alt="" src="/assets/products/jabon-liquido.webp"
+                                                            class="card-product_product-image">
+                                                    </span>
                                                 </div>
-                                            </article>
-                                            <!-- drawer component -->
-                                            <div id="product-detail-drawer" class="
-                                                                                            fixed bottom-0 left-0 right-0 z-999
-                                                                                            md:mx-auto
-                                        
-                                                                                            w-full h-auto
-                                                                                            md:max-w-screen-sm
-                                        
-                                                                                            bg-white rounded-t-4xl md:rounded-4xl
-                                                                                            
-                                                                                            overflow-y-auto
-                                                                                            transition-transform 
-                                                                                            transform-none
-                                                                                            translate-y-full md:-translate-y-full
-                                                                                                    " tabindex="-1"
-                                                aria-labelledby="product-detail">
-                                                <button type="button" data-drawer-hide="product-detail-drawer"
-                                                    aria-controls="product-detail-drawer"
-                                                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 
-                                                                                                absolute top-2.5 end-2.5 inline-flex items-center justify-center z-999">
-                                                    <svg class="w-3 h-3" aria-hidden="true"
-                                                        xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 14 14">
-                                                        <path stroke="currentColor" stroke-linecap="round"
-                                                            stroke-linejoin="round" stroke-width="2"
-                                                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                                    </svg>
-                                                    <span class="sr-only">Close menu</span>
-                                                </button>
-                                                <!-- product image -->
-                                                <figure class="relative m-0 flex justify-center">
-                                                    <div class="card-product_product-image-wrapper">
-                                                        <span>
-                                                            <img alt="" src="/assets/products/jabon-liquido.webp"
-                                                                class="card-product_product-image">
-                                                        </span>
-                                                    </div>
-                                                </figure>
-                                                <!-- product info -->
-                                                <div class="card-product_product-info">
-                                                    <div class="flex flex-col justify-between items-start">
-                                                        <span class="font-bold truncate">
-                                                            POLYANA
-                                                        </span>
-                                                        <span class="text-sm">
-                                                            Jabon Liquido para Manos Pink Doypack 220ml
-                                                        </span>
-                                                        <span class="text-xs opacity-50">
-                                                            Unidades mínimas: 1
-                                                        </span>
-                                                        <span class="text-xs opacity-50 text-warning-content">
-                                                            Stock disponible: 3
-                                                        </span>
-                                                    </div>
+                                            </figure>
+                                            <!-- product info -->
+                                            <div class="card-product_product-info">
+                                                <div class="flex flex-col justify-between items-start">
+                                                    <span class="font-bold truncate">
+                                                        POLYANA
+                                                    </span>
+                                                    <span class="text-sm">
+                                                        Jabon Liquido para Manos Pink Doypack 220ml
+                                                    </span>
+                                                    <span class="text-xs opacity-50">
+                                                        Unidades mínimas: 1
+                                                    </span>
+                                                    <span class="text-xs opacity-50 text-warning-content">
+                                                        Stock disponible: 3
+                                                    </span>
                                                 </div>
-                                                <!-- footer (& separator) -->
-                                                <footer class="border-t border-neutral-focus h-[6rem] w-full
-                                                                                            py-4
-                                                                                            flex items-center justify-center
-                                                                                            ">
-                                                    <button type="button"
-                                                        class="btn btn-secondary mx-auto max-w-[12rem] max-h-[2.2rem]"
-                                                        data-drawer-target="product-detail-drawer"
-                                                        data-drawer-hide="product-detail-drawer"
+                                                <footer class="w-full flex items-end justify-center">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-drawer-target="product-5-detail-drawer"
+                                                        data-drawer-toggle="product-1-detail-drawer"
                                                         data-drawer-placement="bottom"
-                                                        aria-controls="product-detail-drawer">
+                                                        aria-controls="product-1-detail-drawer">
                                                         Ver precio
                                                     </button>
                                                 </footer>
                                             </div>
-                                            <!-- product card -->
-                                            <article class="card-product">
-                                                <!-- product image -->
-                                                <figure class="relative m-0">
-                                                    <div class="card-product_product-image-wrapper">
-                                                        <span>
-                                                            <img alt="" src="/assets/products/jabon.webp"
-                                                                class="card-product_product-image">
-                                                        </span>
+                                        </article>
+                                        <!-- product detail drawer component -->
+                                        <div id="product-1-detail-drawer" class="
+                                                z-99
+                                                fixed bottom-0 left-0 right-0 
+                                                lg:mx-auto
+                                                w-full h-auto
+                                                lg:max-w-screen-sm
+                                                bg-white rounded-t-4xl lg:rounded-4xl
+                                                
+                                                overflow-y-auto
+                                                transition-transform 
+                                                transform-none
+                                                translate-y-full lg:-translate-y-[60%]
+                                            " tabindex="-1" aria-labelledby="product-detail">
+                                            <button type="button" data-drawer-hide="product-1-detail-drawer"
+                                                aria-controls="product-1-detail-drawer"
+                                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 
+                                                        absolute top-2.5 end-2.5 inline-flex items-center justify-center z-999">
+                                                <svg class="w-3 h-3" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                </svg>
+                                                <span class="sr-only">Cerrar menú</span>
+                                            </button>
+                                            <!-- product images carousel -->
+                                            <div id="animation-carousel" class="relative w-full" data-carousel="static">
+                                                <!-- carousel wrapper -->
+                                                <div class="relative h-56 overflow-hidden rounded-lg">
+                                                    <!-- item 1 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item="active">
+                                                        <img src="/assets/products/jabon-liquido.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
                                                     </div>
-                                                </figure>
-                                                <!-- product info -->
-                                                <div class="card-product_product-info ">
-                                                    <div class="flex flex-col">
-                                                        <span class="font-bold truncate">
-                                                            CALIPSO
-                                                        </span>
-                                                        <span class="text-sm">
-                                                            Protector Diario Multiestilo Seda x20un
-                                                        </span>
-                                                        <span class="text-xs opacity-50">
-                                                            Unidades mínimas: 6
-                                                        </span>
+                                                    <!-- item 2 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item>
+                                                        <img src="/assets/products/jabon-liquido.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
                                                     </div>
-                                                    <footer class="w-full flex items-end justify-center">
-                                                        <button type="button" class="
-                                                            btn btn-secondary
-                                                            ">
-                                                            Ver precio
-                                                        </button>
-                                                    </footer>
+                                                    <!-- item 3 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item>
+                                                        <img src="/assets/products/jabon-liquido.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
                                                 </div>
-                                            </article>
-                                            <!-- product card -->
-                                            <article class="card-product">
-                                                <!-- product image -->
-                                                <figure class="relative m-0">
-                                                    <div class="card-product_product-image-wrapper">
-                                                        <span>
-                                                            <img alt="" src="/assets/products/aerosol.webp"
-                                                                class="card-product_product-image">
-                                                        </span>
-                                                    </div>
-                                                </figure>
-                                                <!-- product info -->
-                                                <div class="card-product_product-info">
-                                                    <div class="flex flex-col justify-between items-start">
-                                                        <span class="font-bold truncate">
-                                                            POLYANA
-                                                        </span>
-                                                        <span class="text-sm">
-                                                            Jabon Liquido para Manos Pink Doypack 220ml
-                                                        </span>
-                                                        <span class="text-xs opacity-50">
-                                                            Unidades mínimas: 1
-                                                        </span>
-                                                        <span class="text-xs opacity-50 text-warning-content">
-                                                            Stock disponible: 3
-                                                        </span>
-                                                    </div>
-                                                    <footer class="w-full flex items-end justify-center">
-                                                        <button type="button" class="
-                                                        btn btn-secondary
-                                                        ">
-                                                            Ver precio
-                                                        </button>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!-- product card -->
-                                            <article class="card-product">
-                                                <!-- product image -->
-                                                <figure class="relative m-0">
-                                                    <div class="card-product_product-image-wrapper">
-                                                        <span>
-                                                            <img alt="" src="/assets/products/azucar.webp"
-                                                                class="card-product_product-image">
-                                                        </span>
-                                                    </div>
-                                                </figure>
-                                                <!-- product info -->
-                                                <div class="card-product_product-info ">
-                                                    <div class="flex flex-col">
-                                                        <span class="font-bold truncate">
-                                                            CALIPSO
-                                                        </span>
-                                                        <span class="text-sm">
-                                                            Protector Diario Multiestilo Seda x20un
-                                                        </span>
-                                                        <span class="text-xs opacity-50">
-                                                            Unidades mínimas: 6
-                                                        </span>
-                                                    </div>
-                                                    <footer class="w-full flex items-end justify-center">
-                                                        <button type="button" class="
-                                                                btn btn-secondary
-                                                                ">
-                                                            Ver precio
-                                                        </button>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!-- product card -->
-                                            <article class="card-product">
-                                                <!-- product image -->
-                                                <figure class="relative m-0">
-                                                    <div class="card-product_product-image-wrapper">
-                                                        <span>
-                                                            <img alt="" src="/assets/products/baggio.webp"
-                                                                class="card-product_product-image">
-                                                        </span>
-                                                    </div>
-                                                </figure>
-                                                <!-- product info -->
-                                                <div class="card-product_product-info">
-                                                    <div class="flex flex-col justify-between items-start">
-                                                        <span class="font-bold truncate">
-                                                            POLYANA
-                                                        </span>
-                                                        <span class="text-sm">
-                                                            Jabon Liquido para Manos Pink Doypack 220ml
-                                                        </span>
-                                                        <span class="text-xs opacity-50">
-                                                            Unidades mínimas: 1
-                                                        </span>
-                                                        <span class="text-xs opacity-50 text-warning-content">
-                                                            Stock disponible: 3
-                                                        </span>
-                                                    </div>
-                                                    <footer class="w-full flex items-end justify-center">
-                                                        <button type="button" class="
-                                                            btn btn-secondary
-                                                            ">
-                                                            Ver precio
-                                                        </button>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!-- product card -->
-                                            <article class="card-product">
-                                                <!-- product image -->
-                                                <figure class="relative m-0">
-                                                    <div class="card-product_product-image-wrapper">
-                                                        <span>
-                                                            <img alt="" src="/assets/products/caramelos.webp"
-                                                                class="card-product_product-image">
-                                                        </span>
-                                                    </div>
-                                                </figure>
-                                                <!-- product info -->
-                                                <div class="card-product_product-info ">
-                                                    <div class="flex flex-col">
-                                                        <span class="font-bold truncate">
-                                                            CALIPSO
-                                                        </span>
-                                                        <span class="text-sm">
-                                                            Protector Diario Multiestilo Seda x20un
-                                                        </span>
-                                                        <span class="text-xs opacity-50">
-                                                            Unidades mínimas: 6
-                                                        </span>
-                                                    </div>
-                                                    <footer class="w-full flex items-end justify-center">
-                                                        <button type="button" class="
-                                                            btn btn-secondary
-                                                            ">
-                                                            Ver precio
-                                                        </button>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!-- product card -->
-                                            <article class="card-product">
-                                                <!-- product image -->
-                                                <figure class="relative m-0">
-                                                    <div class="card-product_product-image-wrapper">
-                                                        <span>
-                                                            <img alt="" src="/assets/products/energizante.webp"
-                                                                class="card-product_product-image">
-                                                        </span>
-                                                    </div>
-                                                </figure>
-                                                <!-- product info -->
-                                                <div class="card-product_product-info">
-                                                    <div class="flex flex-col justify-between items-start">
-                                                        <span class="font-bold truncate">
-                                                            POLYANA
-                                                        </span>
-                                                        <span class="text-sm">
-                                                            Jabon Liquido para Manos Pink Doypack 220ml
-                                                        </span>
-                                                        <span class="text-xs opacity-50">
-                                                            Unidades mínimas: 1
-                                                        </span>
-                                                        <span class="text-xs opacity-50 text-warning-content">
-                                                            Stock disponible: 3
-                                                        </span>
-                                                    </div>
-                                                    <footer class="w-full flex items-end justify-center">
-                                                        <button type="button" class="
-                                                            btn btn-secondary
-                                                            ">
-                                                            Ver precio
-                                                        </button>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!-- product card -->
-                                            <article class="card-product">
-                                                <!-- product image -->
-                                                <figure class="relative m-0">
-                                                    <div class="card-product_product-image-wrapper">
-                                                        <span>
-                                                            <img alt="" src="/assets/products/leche.webp"
-                                                                class="card-product_product-image">
-                                                        </span>
-                                                    </div>
-                                                </figure>
-                                                <!-- product info -->
-                                                <div class="card-product_product-info ">
-                                                    <div class="flex flex-col">
-                                                        <span class="font-bold truncate">
-                                                            CALIPSO
-                                                        </span>
-                                                        <span class="text-sm">
-                                                            Protector Diario Multiestilo Seda x20un
-                                                        </span>
-                                                        <span class="text-xs opacity-50">
-                                                            Unidades mínimas: 6
-                                                        </span>
-                                                    </div>
-                                                    <footer class="w-full flex items-end justify-center">
-                                                        <button type="button" class="
-                                                        btn btn-secondary
-                                                        ">
-                                                            Ver precio
-                                                        </button>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!-- product card -->
-                                            <article class="card-product">
-                                                <!-- product image -->
-                                                <figure class="relative m-0">
-                                                    <div class="card-product_product-image-wrapper">
-                                                        <span>
-                                                            <img alt="" src="/assets/products/licor.webp"
-                                                                class="card-product_product-image">
-                                                        </span>
-                                                    </div>
-                                                </figure>
-                                                <!-- product info -->
-                                                <div class="card-product_product-info">
-                                                    <div class="flex flex-col justify-between items-start">
-                                                        <span class="font-bold truncate">
-                                                            POLYANA
-                                                        </span>
-                                                        <span class="text-sm">
-                                                            Jabon Liquido para Manos Pink Doypack 220ml
-                                                        </span>
-                                                        <span class="text-xs opacity-50">
-                                                            Unidades mínimas: 1
-                                                        </span>
-                                                        <span class="text-xs opacity-50 text-warning-content">
-                                                            Stock disponible: 3
-                                                        </span>
-                                                    </div>
-                                                    <footer class="w-full flex items-end justify-center">
-                                                        <button type="button" class="
-                                                            btn btn-secondary
-                                                            ">
-                                                            Ver precio
-                                                        </button>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                            <!-- product card -->
-                                            <article class="card-product">
-                                                <!-- product image -->
-                                                <figure class="relative m-0">
-                                                    <div class="card-product_product-image-wrapper">
-                                                        <span>
-                                                            <img alt="" src="/assets/products/rexona.webp"
-                                                                class="card-product_product-image">
-                                                        </span>
-                                                    </div>
-                                                </figure>
-                                                <!-- product info -->
-                                                <div class="card-product_product-info ">
-                                                    <div class="flex flex-col">
-                                                        <span class="font-bold truncate">
-                                                            CALIPSO
-                                                        </span>
-                                                        <span class="text-sm">
-                                                            Protector Diario Multiestilo Seda x20un
-                                                        </span>
-                                                        <span class="text-xs opacity-50">
-                                                            Unidades mínimas: 6
-                                                        </span>
-                                                    </div>
-                                                    <footer class="w-full flex items-end justify-center">
-                                                        <button type="button" class="
-                                                            btn btn-secondary
-                                                            ">
-                                                            Ver precio
-                                                        </button>
-                                                    </footer>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <!-- pagination -->
-                                        <div class="flex justify-center md:justify-end select-none mt-8">
-                                            <ul class="join flex gap-1 justify-between items-center">
-                                                <li class="join flex gap-1 justify-between items-center"><a
-                                                        class="!rounded-full btn-neutral btn-sm btn-disabled font-bold flex items-center text-xs btn-xs sm:text-sm pl-0 font-bold"
-                                                        href="/"><svg aria-hidden="true" focusable="false"
-                                                            data-prefix="fas" data-icon="angle-left"
-                                                            class="svg-inline--fa fa-angle-left fa-1x opacity-50"
-                                                            role="img" xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 320 512">
-                                                            <path fill="currentColor"
-                                                                d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z">
-                                                            </path>
-                                                        </svg><span class="ml-2">Anterior</span></a></li>
-                                                <li class="join flex gap-1 justify-between items-center"><a
-                                                        class="btn normal-case gap-0 !rounded-full btn-accent btn-sm font-bold flex items-center text-xs btn-xs sm:text-sm w-8 font-bold"
-                                                        href="/">1</a></li><span
-                                                    class="mx-2 font-bold opacity-30">de</span>
-                                                <li class="join flex gap-1 justify-between items-center"><a
-                                                        class="!rounded-full btn-neutral btn-sm font-bold flex items-center text-xs btn-xs sm:text-sm w-8 pl-1 font-bold"
-                                                        href="/">303</a></li>
-                                                <li class="join flex gap-1 justify-between items-center"><a
-                                                        class="!rounded-full btn-neutral btn-sm font-bold flex items-center text-xs btn-xs sm:text-sm pr-0 font-bold"
-                                                        href="/"><span class="mr-2">Siguiente</span><svg
-                                                            aria-hidden="true" focusable="false" data-prefix="fas"
-                                                            data-icon="angle-right"
-                                                            class="svg-inline--fa fa-angle-right fa-1x opacity-50"
-                                                            role="img" xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 320 512">
-                                                            <path fill="currentColor"
-                                                                d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z">
-                                                            </path>
+                                                <!-- Slider controls -->
+                                                <button type="button"
+                                                    class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                                    data-carousel-prev>
+                                                    <span class="
+                                                            inline-flex items-center justify-center
+                                                            w-10 h-10 rounded-full
+                                                            bg-base-400 group-hover:bg-neutral-focus group-focus:outline-none
+                                                            transition-colors duration-200">
+                                                        <svg class="w-4 h-4 text-white rtl:rotate-180"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 6 10">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="M5 1 1 5l4 4" />
                                                         </svg>
-                                                    </a>
-                                                </li>
-                                            </ul>
+                                                        <span class="sr-only">Anterior>
+                                                        </span>
+                                                </button>
+                                                <button type="button"
+                                                    class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                                    data-carousel-next>
+                                                    <span class="
+                                                            inline-flex items-center justify-center
+                                                            w-10 h-10 rounded-full
+                                                            bg-base-400 group-hover:bg-neutral-focus group-focus:outline-none
+                                                            transition-colors duration-200">
+                                                        <svg class="w-4 h-4 text-white rtl:rotate-180"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 6 10">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="m1 9 4-4-4-4" />
+                                                        </svg>
+                                                        <span class="sr-only">Siguiente</span>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <!-- product info -->
+                                            <div class="card-product_product-info">
+                                                <div class="flex flex-col justify-between items-start gap-2">
+                                                    <span class="font-bold truncate">
+                                                        POLYANA
+                                                    </span>
+                                                    <span class="text-sm">
+                                                        Jabon Liquido para Manos Pink Doypack 220ml
+                                                    </span>
+                                                    <span class="text-xs opacity-50">
+                                                        Unidades mínimas: 1
+                                                    </span>
+                                                    <span class="text-xs opacity-50 text-warning-content">
+                                                        Stock disponible: 3
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <!-- footer (& separator) -->
+                                            <footer class="border-t border-neutral-focus h-[6rem] w-full
+                                                    py-4
+                                                    flex items-center justify-center
+                                                    ">
+                                                <button type="button"
+                                                    class="btn btn-secondary mx-auto max-w-[12rem] max-h-[2.2rem]"
+                                                    data-drawer-target="product-1-detail-drawer"
+                                                    data-drawer-hide="product-1-detail-drawer"
+                                                    data-drawer-placement="bottom"
+                                                    aria-controls="product-1-detail-drawer">
+                                                    Ver precio
+                                                </button>
+                                            </footer>
+                                        </div>
+                                        <!-- product card -->
+                                        <article class="card-product">
+                                            <!-- product image -->
+                                            <figure class="relative m-0">
+                                                <div class="card-product_product-image-wrapper">
+                                                    <span>
+                                                        <img alt="" src="/assets/products/jabon.webp"
+                                                            class="card-product_product-image">
+                                                    </span>
+                                                </div>
+                                            </figure>
+                                            <!-- product info -->
+                                            <div class="card-product_product-info">
+                                                <div class="flex flex-col justify-between items-start">
+                                                    <span class="font-bold truncate">
+                                                        CALIPSO
+                                                    </span>
+                                                    <span class="text-sm">
+                                                        Protector Diario Multiestilo Seda x20un
+                                                    </span>
+                                                    <span class="text-xs opacity-50">
+                                                        Unidades mínimas: 6
+                                                    </span>
+                                                </div>
+                                                <footer class="w-full flex items-end justify-center">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-drawer-target="product-2-detail-drawer"
+                                                        data-drawer-toggle="product-2-detail-drawer"
+                                                        data-drawer-placement="bottom"
+                                                        aria-controls="product-2-detail-drawer">
+                                                        Ver precio
+                                                    </button>
+                                                </footer>
+                                            </div>
+                                        </article>
+                                        <!-- product detail drawer component -->
+                                        <div id="product-2-detail-drawer" class="
+                                            z-99
+                                            fixed bottom-0 left-0 right-0 
+                                            lg:mx-auto
+                                            w-full h-auto
+                                            lg:max-w-screen-sm
+                                            bg-white rounded-t-4xl lg:rounded-4xl
+                                            
+                                            overflow-y-auto
+                                            transition-transform 
+                                            transform-none
+                                            translate-y-full lg:-translate-y-[60%]" tabindex="-1"
+                                            aria-labelledby="product-detail">
+                                            <button type="button" data-drawer-hide="product-2-detail-drawer"
+                                                aria-controls="product-2-detail-drawer"
+                                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 
+                                                                                                    absolute top-2.5 end-2.5 inline-flex items-center justify-center z-999">
+                                                <svg class="w-3 h-3" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                </svg>
+                                                <span class="sr-only">Cerrar menú</span>
+                                            </button>
+                                            <!-- product images carousel -->
+                                            <div id="animation-carousel" class="relative w-full" data-carousel="static">
+                                                <!-- carousel wrapper -->
+                                                <div class="relative h-56 overflow-hidden rounded-lg">
+                                                    <!-- item 1 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item="active">
+                                                        <img src="/assets/products/jabon.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                    <!-- item 2 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item>
+                                                        <img src="/assets/products/jabon.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                    <!-- item 3 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item>
+                                                        <img src="/assets/products/jabon.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                </div>
+                                                <!-- Slider controls -->
+                                                <button type="button"
+                                                    class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                                    data-carousel-prev>
+                                                    <span class="inline-flex items-center justify-center
+                                                        w-10 h-10 rounded-full
+                                                        bg-base-400 group-hover:bg-neutral-focus group-focus:outline-none
+                                                        transition-colors duration-200">
+                                                        <svg class="w-4 h-4 text-white rtl:rotate-180"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 6 10">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="M5 1 1 5l4 4" />
+                                                        </svg>
+                                                        <span class="sr-only">Anterior>
+                                                        </span>
+                                                </button>
+                                                <button type="button"
+                                                    class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                                    data-carousel-next>
+                                                    <span class="inline-flex items-center justify-center
+                                                            w-10 h-10 rounded-full
+                                                            bg-base-400 group-hover:bg-neutral-focus group-focus:outline-none
+                                                            transition-colors duration-200">
+                                                        <svg class="w-4 h-4 text-white rtl:rotate-180"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 6 10">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="m1 9 4-4-4-4" />
+                                                        </svg>
+                                                        <span class="sr-only">Siguiente</span>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <!-- product info -->
+                                            <div class="card-product_product-info">
+                                                <div class="flex flex-col justify-between items-start gap-2">
+                                                    <span class="font-bold truncate">
+                                                        CALIPSO
+                                                    </span>
+                                                    <span class="text-sm">
+                                                        Protector Diario Multiestilo Seda x20un
+                                                    </span>
+                                                    <span class="text-xs opacity-50">
+                                                        Unidades mínimas: 6
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <!-- footer (& separator) -->
+                                            <footer class="border-t border-neutral-focus h-[6rem] w-full
+                                                        py-4
+                                                        flex items-center justify-center
+                                                        ">
+                                                <button type="button"
+                                                    class="btn btn-secondary mx-auto max-w-[12rem] max-h-[2.2rem]"
+                                                    data-drawer-target="product-2-detail-drawer"
+                                                    data-drawer-hide="product-2-detail-drawer"
+                                                    data-drawer-placement="bottom"
+                                                    aria-controls="product-2-detail-drawer">
+                                                    Ver precio
+                                                </button>
+                                            </footer>
+                                        </div>
+                                        <!-- product card -->
+                                        <article class="card-product">
+                                            <!-- product image -->
+                                            <figure class="relative m-0">
+                                                <div class="card-product_product-image-wrapper">
+                                                    <span>
+                                                        <img alt="" src="/assets/products/aerosol.webp"
+                                                            class="card-product_product-image">
+                                                    </span>
+                                                </div>
+                                            </figure>
+                                            <!-- product info -->
+                                            <div class="card-product_product-info">
+                                                <div class="flex flex-col justify-between items-start">
+                                                    <span class="font-bold truncate">
+                                                        POLYANA
+                                                    </span>
+                                                    <span class="text-sm">
+                                                        Jabon Liquido para Manos Pink Doypack 220ml
+                                                    </span>
+                                                    <span class="text-xs opacity-50">
+                                                        Unidades mínimas: 1
+                                                    </span>
+                                                    <span class="text-xs opacity-50 text-warning-content">
+                                                        Stock disponible: 3
+                                                    </span>
+                                                </div>
+                                                <footer class="w-full flex items-end justify-center">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-drawer-target="product-3-detail-drawer"
+                                                        data-drawer-toggle="product-3-detail-drawer"
+                                                        data-drawer-placement="bottom"
+                                                        aria-controls="product-3-detail-drawer">
+                                                        Ver precio
+                                                    </button>
+                                                </footer>
+                                            </div>
+                                        </article>
+                                        <!-- product detail drawer component -->
+                                        <div id="product-3-detail-drawer" class="
+                                            z-99
+                                            fixed bottom-0 left-0 right-0 
+                                            lg:mx-auto
+                                            w-full h-auto
+                                            lg:max-w-screen-sm
+                                            bg-white rounded-t-4xl lg:rounded-4xl
+                                            
+                                            overflow-y-auto
+                                            transition-transform 
+                                            transform-none
+                                            translate-y-full lg:-translate-y-[60%]" tabindex="-1"
+                                            aria-labelledby="product-detail">
+                                            <button type="button" data-drawer-hide="product-3-detail-drawer"
+                                                aria-controls="product-3-detail-drawer"
+                                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 
+                                                                                                absolute top-2.5 end-2.5 inline-flex items-center justify-center z-999">
+                                                <svg class="w-3 h-3" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                </svg>
+                                                <span class="sr-only">Cerrar menú</span>
+                                            </button>
+                                            <!-- product images carousel -->
+                                            <div id="animation-carousel" class="relative w-full" data-carousel="static">
+                                                <!-- carousel wrapper -->
+                                                <div class="relative h-56 overflow-hidden rounded-lg">
+                                                    <!-- item 1 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item="active">
+                                                        <img src="/assets/products/aerosol.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                    <!-- item 2 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item>
+                                                        <img src="/assets/products/aerosol.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                    <!-- item 3 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item>
+                                                        <img src="/assets/products/aerosol.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                </div>
+                                                <!-- Slider controls -->
+                                                <button type="button"
+                                                    class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                                    data-carousel-prev>
+                                                    <span
+                                                        class="
+                                                                                                    inline-flex items-center justify-center
+                                                                                                    w-10 h-10 rounded-full
+                                                                                                    bg-base-400 group-hover:bg-neutral-focus group-focus:outline-none
+                                                                                                    transition-colors duration-200">
+                                                        <svg class="w-4 h-4 text-white rtl:rotate-180"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 6 10">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="M5 1 1 5l4 4" />
+                                                        </svg>
+                                                        <span class="sr-only">Anterior>
+                                                        </span>
+                                                </button>
+                                                <button type="button"
+                                                    class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                                    data-carousel-next>
+                                                    <span
+                                                        class="
+                                                                                                    inline-flex items-center justify-center
+                                                                                                    w-10 h-10 rounded-full
+                                                                                                    bg-base-400 group-hover:bg-neutral-focus group-focus:outline-none
+                                                                                                    transition-colors duration-200">
+                                                        <svg class="w-4 h-4 text-white rtl:rotate-180"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 6 10">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="m1 9 4-4-4-4" />
+                                                        </svg>
+                                                        <span class="sr-only">Siguiente</span>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <!-- product info -->
+                                            <div class="card-product_product-info">
+                                                <div class="flex flex-col justify-between items-start gap-2">
+                                                    <span class="font-bold truncate">
+                                                        POLYANA
+                                                    </span>
+                                                    <span class="text-sm">
+                                                        Jabon Liquido para Manos Pink Doypack 220ml
+                                                    </span>
+                                                    <span class="text-xs opacity-50">
+                                                        Unidades mínimas: 1
+                                                    </span>
+                                                    <span class="text-xs opacity-50 text-warning-content">
+                                                        Stock disponible: 3
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <!-- footer (& separator) -->
+                                            <footer class="border-t border-neutral-focus h-[6rem] w-full
+                                                                                            py-4
+                                                                                            flex items-center justify-center
+                                                                                            ">
+                                                <button type="button"
+                                                    class="btn btn-secondary mx-auto max-w-[12rem] max-h-[2.2rem]"
+                                                    data-drawer-target="product-3-detail-drawer"
+                                                    data-drawer-hide="product-3-detail-drawer"
+                                                    data-drawer-placement="bottom"
+                                                    aria-controls="product-3-detail-drawer">
+                                                    Ver precio
+                                                </button>
+                                            </footer>
+                                        </div>
+                                        <!-- product card -->
+                                        <article class="card-product">
+                                            <!-- product image -->
+                                            <figure class="relative m-0">
+                                                <div class="card-product_product-image-wrapper">
+                                                    <span>
+                                                        <img alt="" src="/assets/products/azucar.webp"
+                                                            class="card-product_product-image">
+                                                    </span>
+                                                </div>
+                                            </figure>
+                                            <!-- product info -->
+                                            <div class="card-product_product-info">
+                                                <div class="flex flex-col justify-between items-start">
+                                                    <span class="font-bold truncate">
+                                                        CALIPSO
+                                                    </span>
+                                                    <span class="text-sm">
+                                                        Protector Diario Multiestilo Seda x20un
+                                                    </span>
+                                                    <span class="text-xs opacity-50">
+                                                        Unidades mínimas: 6
+                                                    </span>
+                                                </div>
+                                                <footer class="w-full flex items-end justify-center">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-drawer-target="product-4-detail-drawer"
+                                                        data-drawer-toggle="product-4-detail-drawer"
+                                                        data-drawer-placement="bottom"
+                                                        aria-controls="product-4-detail-drawer">
+                                                        Ver precio
+                                                    </button>
+                                                </footer>
+                                            </div>
+                                        </article>
+                                        <!-- product detail drawer component -->
+                                        <div id="product-4-detail-drawer"
+                                            class="
+                                                                                    z-99
+                                                                                    fixed bottom-0 left-0 right-0 
+                                                                                    lg:mx-auto
+                                                                                    w-full h-auto
+                                                                                    lg:max-w-screen-sm
+                                                                                    bg-white rounded-t-4xl lg:rounded-4xl
+                                                                                    
+                                                                                    overflow-y-auto
+                                                                                    transition-transform 
+                                                                                    transform-none
+                                                                                    translate-y-full lg:-translate-y-[60%]" tabindex="-1"
+                                            aria-labelledby="product-detail">
+                                            <button type="button" data-drawer-hide="product-4-detail-drawer"
+                                                aria-controls="product-4-detail-drawer"
+                                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 
+                                                                                                                                            absolute top-2.5 end-2.5 inline-flex items-center justify-center z-999">
+                                                <svg class="w-3 h-3" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                </svg>
+                                                <span class="sr-only">Cerrar menú</span>
+                                            </button>
+                                            <!-- product images carousel -->
+                                            <div id="animation-carousel" class="relative w-full" data-carousel="static">
+                                                <!-- carousel wrapper -->
+                                                <div class="relative h-56 overflow-hidden rounded-lg">
+                                                    <!-- item 1 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item="active">
+                                                        <img src="/assets/products/azucar.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                    <!-- item 2 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item>
+                                                        <img src="/assets/products/azucar.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                    <!-- item 3 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item>
+                                                        <img src="/assets/products/azucar.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                </div>
+                                                <!-- Slider controls -->
+                                                <button type="button"
+                                                    class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                                    data-carousel-prev>
+                                                    <span
+                                                        class="inline-flex items-center justify-center
+                                                                                                w-10 h-10 rounded-full
+                                                                                                bg-base-400 group-hover:bg-neutral-focus group-focus:outline-none
+                                                                                                transition-colors duration-200">
+                                                        <svg class="w-4 h-4 text-white rtl:rotate-180"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 6 10">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="M5 1 1 5l4 4" />
+                                                        </svg>
+                                                        <span class="sr-only">Anterior>
+                                                        </span>
+                                                </button>
+                                                <button type="button"
+                                                    class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                                    data-carousel-next>
+                                                    <span
+                                                        class="inline-flex items-center justify-center
+                                                                                                    w-10 h-10 rounded-full
+                                                                                                    bg-base-400 group-hover:bg-neutral-focus group-focus:outline-none
+                                                                                                    transition-colors duration-200">
+                                                        <svg class="w-4 h-4 text-white rtl:rotate-180"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 6 10">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="m1 9 4-4-4-4" />
+                                                        </svg>
+                                                        <span class="sr-only">Siguiente</span>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <!-- product info -->
+                                            <div class="card-product_product-info">
+                                                <div class="flex flex-col justify-between items-start gap-2">
+                                                    <span class="font-bold truncate">
+                                                        CALIPSO
+                                                    </span>
+                                                    <span class="text-sm">
+                                                        Protector Diario Multiestilo Seda x20un
+                                                    </span>
+                                                    <span class="text-xs opacity-50">
+                                                        Unidades mínimas: 6
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <!-- footer (& separator) -->
+                                            <footer class="border-t border-neutral-focus h-[6rem] w-full
+                                                py-4
+                                                flex items-center justify-center
+                                                ">
+                                                <button type="button"
+                                                    class="btn btn-secondary mx-auto max-w-[12rem] max-h-[2.2rem]"
+                                                    data-drawer-target="product-4-detail-drawer"
+                                                    data-drawer-hide="product-4-detail-drawer"
+                                                    data-drawer-placement="bottom"
+                                                    aria-controls="product-4-detail-drawer">
+                                                    Ver precio
+                                                </button>
+                                            </footer>
+                                        </div>
+                                        <!-- product card -->
+                                        <article class="card-product">
+                                            <!-- product image -->
+                                            <figure class="relative m-0">
+                                                <div class="card-product_product-image-wrapper">
+                                                    <span>
+                                                        <img alt="" src="/assets/products/baggio.webp"
+                                                            class="card-product_product-image">
+                                                    </span>
+                                                </div>
+                                            </figure>
+                                            <!-- product info -->
+                                            <div class="card-product_product-info">
+                                                <div class="flex flex-col justify-between items-start">
+                                                    <span class="font-bold truncate">
+                                                        POLYANA
+                                                    </span>
+                                                    <span class="text-sm">
+                                                        Jabon Liquido para Manos Pink Doypack 220ml
+                                                    </span>
+                                                    <span class="text-xs opacity-50">
+                                                        Unidades mínimas: 1
+                                                    </span>
+                                                    <span class="text-xs opacity-50 text-warning-content">
+                                                        Stock disponible: 3
+                                                    </span>
+                                                </div>
+                                                <footer class="w-full flex items-end justify-center">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-drawer-target="product-5-detail-drawer"
+                                                        data-drawer-toggle="product-5-detail-drawer"
+                                                        data-drawer-placement="bottom"
+                                                        aria-controls="product-5-detail-drawer">
+                                                        Ver precio
+                                                    </button>
+                                                </footer>
+                                            </div>
+                                        </article>
+                                        <!-- product detail drawer component -->
+                                        <div id="product-5-detail-drawer" class="
+                                                                                        z-99
+                                                                                        fixed bottom-0 left-0 right-0 
+                                                                                        lg:mx-auto
+                                                                                        w-full h-auto
+                                                                                        lg:max-w-screen-sm
+                                                                                        bg-white rounded-t-4xl lg:rounded-4xl
+                                                                                        
+                                                                                        overflow-y-auto
+                                                                                        transition-transform 
+                                                                                        transform-none
+                                                                                        translate-y-full lg:-translate-y-[60%]
+                                                                                    " tabindex="-1"
+                                            aria-labelledby="product-detail">
+                                            <button type="button" data-drawer-hide="product-5-detail-drawer"
+                                                aria-controls="product-5-detail-drawer"
+                                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 
+                                                                                                absolute top-2.5 end-2.5 inline-flex items-center justify-center z-999">
+                                                <svg class="w-3 h-3" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                </svg>
+                                                <span class="sr-only">Cerrar menú</span>
+                                            </button>
+                                            <!-- product images carousel -->
+                                            <div id="animation-carousel" class="relative w-full" data-carousel="static">
+                                                <!-- carousel wrapper -->
+                                                <div class="relative h-56 overflow-hidden rounded-lg">
+                                                    <!-- item 1 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item="active">
+                                                        <img src="/assets/products/baggio.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                    <!-- item 2 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item>
+                                                        <img src="/assets/products/baggio.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                    <!-- item 3 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item>
+                                                        <img src="/assets/products/baggio.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                </div>
+                                                <!-- Slider controls -->
+                                                <button type="button"
+                                                    class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                                    data-carousel-prev>
+                                                    <span
+                                                        class="
+                                                                                                    inline-flex items-center justify-center
+                                                                                                    w-10 h-10 rounded-full
+                                                                                                    bg-base-400 group-hover:bg-neutral-focus group-focus:outline-none
+                                                                                                    transition-colors duration-200">
+                                                        <svg class="w-4 h-4 text-white rtl:rotate-180"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 6 10">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="M5 1 1 5l4 4" />
+                                                        </svg>
+                                                        <span class="sr-only">Anterior>
+                                                        </span>
+                                                </button>
+                                                <button type="button"
+                                                    class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                                    data-carousel-next>
+                                                    <span
+                                                        class="
+                                                                                                    inline-flex items-center justify-center
+                                                                                                    w-10 h-10 rounded-full
+                                                                                                    bg-base-400 group-hover:bg-neutral-focus group-focus:outline-none
+                                                                                                    transition-colors duration-200">
+                                                        <svg class="w-4 h-4 text-white rtl:rotate-180"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 6 10">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="m1 9 4-4-4-4" />
+                                                        </svg>
+                                                        <span class="sr-only">Siguiente</span>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <!-- product info -->
+                                            <div class="card-product_product-info">
+                                                <div class="flex flex-col justify-between items-start gap-2">
+                                                    <span class="font-bold truncate">
+                                                        POLYANA
+                                                    </span>
+                                                    <span class="text-sm">
+                                                        Jabon Liquido para Manos Pink Doypack 220ml
+                                                    </span>
+                                                    <span class="text-xs opacity-50">
+                                                        Unidades mínimas: 1
+                                                    </span>
+                                                    <span class="text-xs opacity-50 text-warning-content">
+                                                        Stock disponible: 3
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <!-- footer (& separator) -->
+                                            <footer class="border-t border-neutral-focus h-[6rem] w-full
+                                                                                            py-4
+                                                                                            flex items-center justify-center
+                                                                                            ">
+                                                <button type="button"
+                                                    class="btn btn-secondary mx-auto max-w-[12rem] max-h-[2.2rem]"
+                                                    data-drawer-target="product-5-detail-drawer"
+                                                    data-drawer-hide="product-5-detail-drawer"
+                                                    data-drawer-placement="bottom"
+                                                    aria-controls="product-5-detail-drawer">
+                                                    Ver precio
+                                                </button>
+                                            </footer>
+                                        </div>
+                                        <!-- product card -->
+                                        <article class="card-product">
+                                            <!-- product image -->
+                                            <figure class="relative m-0">
+                                                <div class="card-product_product-image-wrapper">
+                                                    <span>
+                                                        <img alt="" src="/assets/products/caramelos.webp"
+                                                            class="card-product_product-image">
+                                                    </span>
+                                                </div>
+                                            </figure>
+                                            <!-- product info -->
+                                            <div class="card-product_product-info">
+                                                <div class="flex flex-col justify-between items-start">
+                                                    <span class="font-bold truncate">
+                                                        CALIPSO
+                                                    </span>
+                                                    <span class="text-sm">
+                                                        Protector Diario Multiestilo Seda x20un
+                                                    </span>
+                                                    <span class="text-xs opacity-50">
+                                                        Unidades mínimas: 6
+                                                    </span>
+                                                </div>
+                                                <footer class="w-full flex items-end justify-center">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-drawer-target="product-6-detail-drawer"
+                                                        data-drawer-toggle="product-6-detail-drawer"
+                                                        data-drawer-placement="bottom"
+                                                        aria-controls="product-6-detail-drawer">
+                                                        Ver precio
+                                                    </button>
+                                                </footer>
+                                            </div>
+                                        </article>
+                                        <!-- product detail drawer component -->
+                                        <div id="product-6-detail-drawer"
+                                            class="
+                                                                                    z-99
+                                                                                    fixed bottom-0 left-0 right-0 
+                                                                                    lg:mx-auto
+                                                                                    w-full h-auto
+                                                                                    lg:max-w-screen-sm
+                                                                                    bg-white rounded-t-4xl lg:rounded-4xl
+                                                                                    
+                                                                                    overflow-y-auto
+                                                                                    transition-transform 
+                                                                                    transform-none
+                                                                                    translate-y-full lg:-translate-y-[60%]" tabindex="-1"
+                                            aria-labelledby="product-detail">
+                                            <button type="button" data-drawer-hide="product-6-detail-drawer"
+                                                aria-controls="product-6-detail-drawer"
+                                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 
+                                                                                                                                            absolute top-2.5 end-2.5 inline-flex items-center justify-center z-999">
+                                                <svg class="w-3 h-3" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                </svg>
+                                                <span class="sr-only">Cerrar menú</span>
+                                            </button>
+                                            <!-- product images carousel -->
+                                            <div id="animation-carousel" class="relative w-full" data-carousel="static">
+                                                <!-- carousel wrapper -->
+                                                <div class="relative h-56 overflow-hidden rounded-lg">
+                                                    <!-- item 1 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item="active">
+                                                        <img src="/assets/products/caramelos.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                    <!-- item 2 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item>
+                                                        <img src="/assets/products/caramelos.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                    <!-- item 3 -->
+                                                    <div class="hidden duration-700 ease-in-out bg-base-100"
+                                                        data-carousel-item>
+                                                        <img src="/assets/products/caramelos.webp"
+                                                            class="absolute block h-full w-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                                            alt="...">
+                                                    </div>
+                                                </div>
+                                                <!-- Slider controls -->
+                                                <button type="button"
+                                                    class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                                    data-carousel-prev>
+                                                    <span
+                                                        class="inline-flex items-center justify-center
+                                                                                                w-10 h-10 rounded-full
+                                                                                                bg-base-400 group-hover:bg-neutral-focus group-focus:outline-none
+                                                                                                transition-colors duration-200">
+                                                        <svg class="w-4 h-4 text-white rtl:rotate-180"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 6 10">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="M5 1 1 5l4 4" />
+                                                        </svg>
+                                                        <span class="sr-only">Anterior>
+                                                        </span>
+                                                </button>
+                                                <button type="button"
+                                                    class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                                                    data-carousel-next>
+                                                    <span
+                                                        class="inline-flex items-center justify-center
+                                                                                                    w-10 h-10 rounded-full
+                                                                                                    bg-base-400 group-hover:bg-neutral-focus group-focus:outline-none
+                                                                                                    transition-colors duration-200">
+                                                        <svg class="w-4 h-4 text-white rtl:rotate-180"
+                                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                            fill="none" viewBox="0 0 6 10">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="m1 9 4-4-4-4" />
+                                                        </svg>
+                                                        <span class="sr-only">Siguiente</span>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <!-- product info -->
+                                            <div class="card-product_product-info">
+                                                <div class="flex flex-col justify-between items-start gap-2">
+                                                    <span class="font-bold truncate">
+                                                        CALIPSO
+                                                    </span>
+                                                    <span class="text-sm">
+                                                        Protector Diario Multiestilo Seda x20un
+                                                    </span>
+                                                    <span class="text-xs opacity-50">
+                                                        Unidades mínimas: 6
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <!-- footer (& separator) -->
+                                            <footer class="border-t border-neutral-focus h-[6rem] w-full
+                                                                                                py-4
+                                                                                                flex items-center justify-center
+                                                                                                ">
+                                                <button type="button"
+                                                    class="btn btn-secondary mx-auto max-w-[12rem] max-h-[2.2rem]"
+                                                    data-drawer-target="product-6-detail-drawer"
+                                                    data-drawer-hide="product-6-detail-drawer"
+                                                    data-drawer-placement="bottom"
+                                                    aria-controls="product-6-detail-drawer">
+                                                    Ver precio
+                                                </button>
+                                            </footer>
                                         </div>
                                     </div>
+                                    <!-- pagination -->
+                                    <footer class="mt-10 flex justify-center items-center gap-2">
+                                        <div class="flex gap-1 justify-between items-center">
+                                            <a class="!rounded-full btn-neutral
+                                                        py-2 pe-4 ps-2 flex items-center 
+                                                        font-bold text-xs sm:text-sm" href="/">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"
+                                                    viewBox="0 0 24 24" fill="none" stroke="#8899a4" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="arcs">
+                                                    <path d="M15 18l-6-6 6-6"></path>
+                                                </svg>
+                                                <span class="ml-2">
+                                                    Anterior
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="flex gap-1 justify-between items-center">
+                                            <a class="
+                                                btn btn-accent !rounded-full
+                                                text-center font-bold text-xs sm:text-sm w-8
+                                                grid justify-center" href="/">
+                                                1
+                                            </a>
+                                        </div>
+                                        <span class="mx-2 font-bold opacity-30">
+                                            de
+                                        </span>
+                                        <div class="flex gap-1 justify-between items-center">
+                                            <a class="
+                                                    
+                                                    text-center font-semibold text-xs sm:text-sm w-8
+                                                    grid justify-center" href="/">
+                                                1000
+                                            </a>
+                                        </div>
+                                        <div class="flex gap-1 justify-between items-center">
+                                            <a class="!rounded-full btn-neutral
+                                                    py-2 ps-4 pe-2 flex items-center 
+                                                    font-bold text-xs sm:text-sm" href="/">
+                                                <span>
+                                                    Siguiente
+                                                </span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20"
+                                                    viewBox="0 0 24 24" fill="none" stroke="#8899a4" stroke-width="2"
+                                                    stroke-linecap="round" stroke-linejoin="arcs">
+                                                    <path d="M9 18l6-6-6-6"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </footer>
                                 </div>
                             </section>
                         </section>
@@ -1044,9 +1597,9 @@
             <!-- pc screen page footer -->
             <footer class="
                 footer
-                hidden md:flex justify-between 
-                min-h-[6rem] flex flex-col 
-                py-8 md:px-4
+                hidden lg:flex justify-between 
+                min-h-[6rem] flex-col 
+                mt-8 py-8 md:px-4
                 bg-neutral text-neutral-content
                 ">
                 <!-- logo & FAQ -->
@@ -1062,7 +1615,7 @@
                         </a>
                     </div>
                     <div class="flex items-center justify-end py-2 md:justify-between">
-                        <a class="rounded-2xl btn-neutral btn-sm btn-link flex items-center w-min md:w-auto text-neutral-content"
+                        <a class="rounded-2xl btn-neutral btn-link flex items-center w-min md:w-auto text-neutral-content"
                             href="/">
                             Preguntas frecuentes
                         </a>
@@ -1135,17 +1688,17 @@
             </div>
             <!-- mobile nav nemu-->
             <ul class="
-                md:hidden
+                lg:hidden
                 bg-base-100 
-                fixed z-50 flex min-h-[4rem] w-full gap-0
+                fixed z-30 flex min-h-[4rem] w-full gap-0
                 bottom-0  
             ">
                 <!-- search (active state: btn-accent) -->
                 <li class="flex grow basis-0 items-center justify-end sm:grow">
-                    <a class="btn-accent 
-    flex h-full grow flex-col flex-nowrap items-center justify-center gap-1                                rounded-none 
-    text-xs font-bold 
-    sm:flex-row sm:gap-2 sm:text-sm" href="/">
+                    <button class="btn-accent 
+                        flex h-full grow flex-col flex-nowrap items-center justify-center gap-1                                rounded-none 
+                        text-xs font-bold 
+                        sm:flex-row sm:gap-2 sm:text-sm">
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="magnifying-glass"
                             class="h-[1.2rem]" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                             <path fill="currentColor"
@@ -1155,12 +1708,12 @@
                         <span>
                             Explorar
                         </span>
-                    </a>
+                    </button>
                 </li>
                 <!-- cart -->
                 <li class="flex grow basis-0 items-center justify-center sm:grow">
-                    <a class="flex h-full grow flex-col flex-nowrap items-center justify-center gap-1 rounded-none text-xs font-bold sm:flex-row sm:gap-2 sm:text-sm btn-ghost"
-                        href="/">
+                    <button
+                        class="flex h-full grow flex-col flex-nowrap items-center justify-center gap-1 rounded-none text-xs font-bold sm:flex-row sm:gap-2 sm:text-sm btn-ghost">
                         <svg id='Delivery_Handcart_24' width='20' height='20' viewBox='0 0 24 24'
                             xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
                             <rect width='24' height='24' stroke='none' fill='#000000' opacity='0' />
@@ -1175,12 +1728,12 @@
                         <span>
                             Carrito
                         </span>
-                    </a>
+                    </button>
                 </li>
                 <!-- orders -->
                 <li class="flex grow basis-0 items-center justify-center sm:grow">
-                    <a class="flex h-full grow flex-col flex-nowrap items-center justify-center gap-1 rounded-none text-xs font-bold sm:flex-row sm:gap-2 sm:text-sm btn-ghost"
-                        href="/">
+                    <button
+                        class="flex h-full grow flex-col flex-nowrap items-center justify-center gap-1 rounded-none text-xs font-bold sm:flex-row sm:gap-2 sm:text-sm btn-ghost">
                         <svg id='truck_24' width='22' height='22' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'
                             xmlns:xlink='http://www.w3.org/1999/xlink'>
                             <rect width='24' height='24' stroke='none' fill='#000000' opacity='0' />
@@ -1215,12 +1768,14 @@
                         <span>
                             Pedidos
                         </span>
-                    </a>
+                    </button>
                 </li>
                 <!-- profile -->
                 <li class="flex grow basis-0 items-center justify-center sm:grow">
-                    <a class="flex h-full grow flex-col flex-nowrap items-center justify-center gap-1 rounded-none text-xs font-bold sm:flex-row sm:gap-2 sm:text-sm btn-ghost"
-                        href="/">
+                    <button class="flex grow basis-0 items-center gap-1 justify-center h-full flex-col flex-nowrap
+                    rounded-none text-xs font-bold sm:flex-row sm:gap-2 sm:text-sm btn-ghost"
+                        data-drawer-target="login-drawer" data-drawer-toggle="login-drawer" data-drawer-placement="left"
+                        aria-controls="login-drawer">
                         <svg id='Male_User_24' width='22' height='22' viewBox='0 0 24 24'
                             xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
                             <rect width='24' height='24' stroke='none' fill='#000000' opacity='0' />
@@ -1235,11 +1790,97 @@
                         <span>
                             Ingresar
                         </span>
-                    </a>
+                    </button>
                 </li>
             </ul>
         </div>
     </div>
+    <!-- login drawer component -->
+    <aside id="login-drawer" class="
+        fixed top-0 left-0 z-50
+        h-screen
+        p-4 overflow-y-hidden
+        transition-transform -translate-x-full
+        bg-neutral" style="width: 40rem; max-width: 100%;" tabindex="-1" aria-labelledby="drawer-left-label">
+        <a href="/" class="
+            flex flex-col items-center justify-center
+            btn-ghost px-4
+            h-[6rem] w-[75%] mx-auto
+            rounded-2xl">
+            <img height="30" width="80" src="/assets/logo.png" alt="" class="m-0 h-full w-auto object-contain">
+        </a>
+        <button type="button" data-drawer-hide="login-drawer" aria-controls="login-drawer" class="text-gray-400 bg-transparent
+                hover:bg-gray-200 hover:text-gray-900 cursor-pointer
+                rounded-lg text-sm w-8 h-8 z-50
+                absolute top-2.5 end-2.5 inline-flex items-center justify-center
+                ">
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+            </svg>
+            <span class="sr-only">Cerrar menú</span>
+        </button>
+        <!-- form -->
+        <section class=" flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+            <div class="
+                    w-full bg-white rounded-lg
+                    shadow md:mt-0 sm:max-w-lg xl:p-0">
+                <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                    <h1 class="text-xl font-bold text-neutral-content leading-tight tracking-tight md:text-2xl">
+                        Iniciar sesión
+                    </h1>
+                    <form class="space-y-4 md:space-y-6" action="#">
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium text-neutral-content">
+                                Email
+                            </label>
+                            <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-neutral-content rounded-lg
+                                    focus:ring-base-500 focus:border-base-500
+                                    block w-full p-2.5" placeholder="mi_emaill@email.com" required="">
+                        </div>
+                        <div>
+                            <label for="password" class="block mb-2 text-sm font-medium  text-neutral-content">
+                                Contraseña
+                            </label>
+                            <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-neutral-content rounded-lg
+                                focus:ring-base-500 focus:border-base-500
+                                block w-full p-2.5" required="">
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 cursor-pointer
+                                        focus:ring-1" required="">
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    <label for="remember" class="text-base-500 cursor-pointer">
+                                        Recuerdame
+                                    </label>
+                                </div>
+                            </div>
+                            <a href="#" class="text-sm font-medium text-base-500 hover:underline">
+                                Olvidé mi contraseña
+                            </a>
+                        </div>
+                        <button type="submit" class="w-full text-neutral-content bg-base-200 hover:bg-base-700
+                                focus:ring-2 focus:outline-none font-medium rounded-lg cursor-pointer
+                                text-sm px-5 py-2.5 text-center">
+                            Iniciar sesión
+                        </button>
+                        <p class="text-sm font-light text-gray-500">
+                            No tengo una cuenta todavía
+                            <span class="ps-2">
+                                <a href="#" class="font-medium text-base-500 hover:underline">
+                                    Crear cuenta
+                                </a>
+                            </span>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </aside>
+
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 
 </body>
