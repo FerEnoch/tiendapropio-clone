@@ -157,6 +157,14 @@
 
 
     /* products grid */
+    .products-grid {
+        @apply w-full grid items-center justify-items-center
+            grid-cols-[repeat(2,minmax(150px,1fr))]
+            lg:grid-cols-[repeat(auto-fill,minmax(200px,1fr))]
+            xl:grid-cols-[repeat(4,1fr)]
+            gap-x-2 gap-y-4 lg:gap-x-4;
+    }
+
     .card-product {
         content-visibility: auto;
         @apply w-full h-full flex flex-col justify-between items-start gap-4
@@ -612,12 +620,7 @@
                                         </span>
                                     </div>
                                     <!-- products grid-->
-                                    <div class="
-                                                                            w-full grid items-center justify-items-center
-                                                                            grid-cols-[repeat(2,minmax(150px,1fr))]
-                                                                            lg:grid-cols-[repeat(auto-fill,minmax(200px,1fr))]
-                                                                            xl:grid-cols-[repeat(4,1fr)]
-                                                                            gap-x-2 gap-y-4 lg:gap-x-4">
+                                    <div class="products-grid">
                                         <!-- product card -->
                                         <article class="card-product">
                                             <!-- product image -->
@@ -1134,20 +1137,19 @@
                                             </div>
                                         </article>
                                         <!-- product detail drawer component -->
-                                        <div id="product-4-detail-drawer"
-                                            class="
-                                                                                                                        z-99
-                                                                                                                        fixed bottom-0 left-0 right-0 
-                                                                                                                        lg:mx-auto
-                                                                                                                        w-full h-auto
-                                                                                                                        lg:max-w-screen-sm
-                                                                                                                        bg-white rounded-t-4xl lg:rounded-4xl
-                                                                                                                        
-                                                                                                                        overflow-y-auto
-                                                                                                                        transition-transform 
-                                                                                                                        transform-none
-                                                                                                                        translate-y-full lg:-translate-y-[60%]"
-                                            tabindex="-1" aria-labelledby="product-detail">
+                                        <div id="product-4-detail-drawer" class="
+                                                z-99
+                                                fixed bottom-0 left-0 right-0 
+                                                lg:mx-auto
+                                                w-full h-auto
+                                                lg:max-w-screen-sm
+                                                bg-white rounded-t-4xl lg:rounded-4xl
+                                                
+                                                overflow-y-auto
+                                                transition-transform 
+                                                transform-none
+                                                translate-y-full lg:-translate-y-[60%]" tabindex="-1"
+                                            aria-labelledby="product-detail">
                                             <button type="button" data-drawer-hide="product-4-detail-drawer"
                                                 aria-controls="product-4-detail-drawer"
                                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 
@@ -1292,21 +1294,19 @@
                                             </div>
                                         </article>
                                         <!-- product detail drawer component -->
-                                        <div id="product-5-detail-drawer"
-                                            class="
-                                                                                                                            z-99
-                                                                                                                            fixed bottom-0 left-0 right-0 
-                                                                                                                            lg:mx-auto
-                                                                                                                            w-full h-auto
-                                                                                                                            lg:max-w-screen-sm
-                                                                                                                            bg-white rounded-t-4xl lg:rounded-4xl
-                                                                                                                            
-                                                                                                                            overflow-y-auto
-                                                                                                                            transition-transform 
-                                                                                                                            transform-none
-                                                                                                                            translate-y-full lg:-translate-y-[60%]
-                                                                                                                        " tabindex="-1"
-                                            aria-labelledby="product-detail">
+                                        <div id="product-5-detail-drawer" class="
+                                                z-99
+                                                fixed bottom-0 left-0 right-0 
+                                                lg:mx-auto
+                                                w-full h-auto
+                                                lg:max-w-screen-sm
+                                                bg-white rounded-t-4xl lg:rounded-4xl
+                                                
+                                                overflow-y-auto
+                                                transition-transform 
+                                                transform-none
+                                                translate-y-full lg:-translate-y-[60%]
+                                            " tabindex="-1" aria-labelledby="product-detail">
                                             <button type="button" data-drawer-hide="product-5-detail-drawer"
                                                 aria-controls="product-5-detail-drawer"
                                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 
@@ -1454,20 +1454,19 @@
                                             </div>
                                         </article>
                                         <!-- product detail drawer component -->
-                                        <div id="product-6-detail-drawer"
-                                            class="
-                                                                                                                        z-99
-                                                                                                                        fixed bottom-0 left-0 right-0 
-                                                                                                                        lg:mx-auto
-                                                                                                                        w-full h-auto
-                                                                                                                        lg:max-w-screen-sm
-                                                                                                                        bg-white rounded-t-4xl lg:rounded-4xl
-                                                                                                                        
-                                                                                                                        overflow-y-auto
-                                                                                                                        transition-transform 
-                                                                                                                        transform-none
-                                                                                                                        translate-y-full lg:-translate-y-[60%]"
-                                            tabindex="-1" aria-labelledby="product-detail">
+                                        <div id="product-6-detail-drawer" class="
+                                            z-99
+                                            fixed bottom-0 left-0 right-0 
+                                            lg:mx-auto
+                                            w-full h-auto
+                                            lg:max-w-screen-sm
+                                            bg-white rounded-t-4xl lg:rounded-4xl
+                                            
+                                            overflow-y-auto
+                                            transition-transform 
+                                            transform-none
+                                            translate-y-full lg:-translate-y-[60%]" tabindex="-1"
+                                            aria-labelledby="product-detail">
                                             <button type="button" data-drawer-hide="product-6-detail-drawer"
                                                 aria-controls="product-6-detail-drawer"
                                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 
