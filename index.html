@@ -8,13 +8,15 @@
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
     <style type="text/tailwindcss">
+        /* reset */
         body {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    @theme {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* @tailwind base */
+        @theme {
         --color-base-100: #f0f0f0;
         --color-base-200: #e0e0e0;
         --color-base-300: #c0c0c0;
@@ -43,12 +45,14 @@
         --color-error: #FF4A4A;
         --color-error-content: #FFFFFF;
     
-    }
+        }
     
+    /* @tailwind utility */
     @utility container {
         margin-inline: auto;
     }
     
+    /* button classes */
     .btn {
         @apply relative flex flex-nowrap gap-2 py-2 px-4
             cursor-pointer
@@ -81,6 +85,11 @@
             transition duration-200 ease-out;
     }
     
+    /* :::::::::::::
+        components
+    ::::::::::::: */
+
+    /* page header */
     .header {
         @apply sticky top-0 w-full py-0 z-20
                 flex justify-center items-center md:justify-between 
@@ -113,6 +122,7 @@
                 text-xs font-bold sm:text-sm;
     }
     
+    /* search section */
     .search-product-section {
         @apply flex w-full items-center justify-between h-[6rem] 
                 md:h-[7rem] md:px-4;
@@ -128,6 +138,25 @@
         @apply h-[3rem] border-0 w-full rounded-full rounded-l-none !outline-0 !ring-0 !bg-transparent text-[1.2rem];
     }
     
+    /* product categories */
+    .category-list {
+        @apply py-2 lg:mt-0 lg:ps-4
+            flex items-stretch justify-start space-x-2
+            lg:flex-col lg:space-x-0 lg:space-y-4
+            overflow-y-visible overflow-x-auto lg:overflow-x-visible 
+            lg:w-48;
+    }
+    
+    .category-list_category-item {
+        @apply first:ps-2 md:first:ps-0 last:pe-2 md:last:pe-0;
+    }
+    
+    .category-list_category-item_button {
+        @apply w-full min-w-[10rem] flex items-center h-[3rem] rounded-2xl;
+    }
+
+
+    /* products grid */
     .card-product {
         content-visibility: auto;
         @apply w-full h-full flex flex-col justify-between items-start gap-4
@@ -162,24 +191,7 @@
         @apply h-full w-full p-4
             flex flex-col justify-between items-start gap-4;
     }
-    
-    .category-list {
-        @apply py-2 lg:mt-0 lg:ps-4
-            flex items-stretch justify-start
-            lg:flex-col space-x-2 lg:space-x-0 lg:space-y-4
-            overflow-y-visible overflow-x-auto lg:overflow-x-visible 
-            lg:w-48;
-    }
-    
-    .category-list_category-item {
-        @apply first:ps-2 md:first:ps-0 last:pe-2 md:last:pe-0;
-    }
-    
-    .category-list_category-item_button {
-        @apply w-full min-w-[10rem] flex items-center h-[3rem] rounded-2xl;
-    }
-
-        </style>
+    </style>
 </head>
 
 <body>
@@ -305,12 +317,12 @@
             </header>
             <main class="w-full h-full flex justify-center relative">
                 <!-- wrapper -->
-                <div class="
-                    w-full lg:w-[80vw] mx-auto 
-                    flex justify-center
-                    pb-20 pt-4 lg:pb-0 2xl:max-w-screen">
+                <div class="overflow-auto
+                   md:container 2xl:max-w-screen-xl
+                   flex justify-center
+                   pb-20 pt-4 lg:pb-0">
                     <!-- wrapper -->
-                    <div class="w-full">
+                    <div class="container">
                         <!-- products search section -->
                         <section class="search-product-section">
                             <div class="hidden grow basis-0 lg:block">
@@ -344,7 +356,9 @@
                             </div>
                         </section>
                         <!-- categories & products -->
-                        <section class="flex w-full flex-col justify-between lg:flex-row lg:gap-8">
+                        <section class="
+                        w-full
+                        lg:flex justify-between flex-row lg:gap-8">
                             <!-- categories section -->
                             <section class="flex flex-col">
                                 <!-- category list title -->
@@ -402,23 +416,45 @@
                                             </a>
                                         </button>
                                     </li>
+                                    <!-- category item -->
+                                    <li class="category-list_category-item">
+                                        <button class="category-list_category-item_button btn btn-neutral">
+                                            <a href="/" class="flex w-full items-center justify-between gap-1">
+                                                <span class="text-start font-semibold">
+                                                    Alacena
+                                                </span>
+                                                <figure class="overflow-visible shrink-0">
+                                                    <img alt="Alacena" src="/assets/icons/alacena.webp"
+                                                        class="relative m-auto w-auto h-6 grayscale" />
+                                                </figure>
+                                            </a>
+                                        </button>
+                                    </li>
                                 </ul>
                             </section>
                             <!-- products main section -->
-                            <section class="flex w-full flex-col justify-start md:gap-6">
+                            <section class="h-full flex w-full flex-col justify-start md:gap-6">
                                 <!-- card sponsored -->
-                                <div
-                                    class="w-full h-full flex flex-row gap-4 rounded-2xl mt-4 px-4 overflow-x-hidden overflow-y-hidden">
-                                    <div
-                                        class="w-full h-full flex-[0_0_auto] cursor-pointer transition hover:scale-[1.03] hover:shadow-2xl">
+                                <div class="
+                                    w-full lg:h-24
+                                    rounded-2xl 
+                                    mt-4 lg:mt-0 px-4
+                                    overflow-x-hidden overflow-y-hidden">
+                                    <div class="
+                                        w-full h-full
+                                        flex-[0_0_auto]
+                                        flex flex-row justify-between items-start gap-4 
+                                        transition hover:scale-[1.03] hover:shadow-2xl
+                                        rounded-2xl bg-accent
+                                        ">
                                         <a class="
                                             relative 
-                                            h-[6.8rem] w-full
-                                            flex flex-col items-start justify-start 
-                                            !bg-accent
-                                            rounded-2xl" href="/"">
+                                            h-full w-full cursor-pointer
+                                            py-4
+                                            flex flex-col items-start justify-center 
+                                            " href="/"">
                                             <h2 class=" font-semibold text-accent-content text-xs lg:text-md uppercase
-                                            my-0 ml-4 mt-4 sm:mt-2 xl:text-lg z-10 ">
+                                            my-0 ml-4 sm:mt-2 xl:text-lg z-10 ">
                                                 Encuentra los mejores precios
                                             </h2>
                                             <h2 class=" text-accent-content ml-4 mt-0 text-2xl font-bold md:text-4xl
@@ -426,12 +462,12 @@
                                             Revista de ofertas
                                             </h2>
                                             <button type="button" class="
-                                                        btn btn-accent
-                                                        !absolute right-2 bottom-8 sm:right-8
+                                                        btn btn-accent text-xs
+                                                        !absolute right-2 bottom-4 md:bottom-8 sm:right-8
                                                         ">
                                                 Ver Todos
                                                 <svg aria-hidden="true" focusable="false" data-prefix="fas"
-                                                    data-icon="arrow-right" class="w-4" role="img"
+                                                    data-icon="arrow-right" class="w-3" role="img"
                                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                                     <path fill="currentColor"
                                                         d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z">
@@ -675,37 +711,35 @@
             </main>
             <!-- pc screen page footer -->
             <footer class="
-                footer
-                hidden lg:flex justify-between 
-                min-h-[6rem] flex-col 
-                mt-8 py-8 md:px-4
+                hidden lg:flex flex-col justify-between items-center gap-4
+                min-h-[6rem] 
+                mt-8 py-8 px-4
                 bg-neutral text-neutral-content
                 ">
                 <!-- logo & FAQ -->
                 <div class="
+                md:container 2xl:max-w-screen-xl
                 m-auto flex flex-col items-center 
-                sm:container sm:flex-row sm:justify-between
-                2xl:max-w-screen-xl
+                lg:flex-row lg:justify-between
                 ">
                     <div class="">
-                        <a class="btn btn-ghost h-[50px] gap-0 px-0 text-xl font-bold normal-case sm:px-1" href="/">
+                        <a class="btn btn-ghost h-[70px] gap-0 px-0 border-none" href="/">
                             <img height="50" width="200" src="/assets/logo.png" alt=""
                                 class="m-0 h-full w-auto object-contain" />
                         </a>
                     </div>
                     <div class="flex items-center justify-end py-2 md:justify-between">
-                        <a class="rounded-2xl btn-neutral btn-link flex items-center w-min md:w-auto text-neutral-content"
+                        <a class="rounded-2xl btn-neutral flex items-center w-min md:w-auto text-neutral-content px-2"
                             href="/">
                             Preguntas frecuentes
                         </a>
                     </div>
                 </div>
-                <!-- contact info -->
+                <!-- contact section -->
                 <div class="
-                        m-auto flex flex-col items-center
-                        sm:container sm:flex-row sm:justify-between 
-                        2xl:max-w-screen-xl
-                    ">
+                    md:container 2xl:max-w-screen-xl
+                    flex flex-row items-center justify-between
+                    ps-2">
                     <div class="flex flex-col justify-between gap-1 px-4">
                         <span>
                             Mi WhatsApp
@@ -720,28 +754,33 @@
                             Mi dirección
                         </span>
                     </div>
-                    <div class="flex justify-between items-center gap-2 px-4">
-                        <span class="pr-2">
+                    <div class="relative flex justify-between items-center space-x-4">
+                        <span>
                             Síguenos
                         </span>
-                        <a class="btn normal-case gap-0 !rounded-full btn-accent btn-sm w-8 h-8 px-0" target="_blank"
-                            href="/">
-                            <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram"
-                                class="svg-inline--fa fa-instagram " role="img" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 448 512" width="16">
-                                <path fill="currentColor"
-                                    d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
-                                </path>
+                        <a class="relative bottom-1 w-8 h-8 px-0" target="_blank" href="/">
+                            <?xml version="1.0" encoding="utf-8"?>
+                            <svg width="42px" height="42px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20 12.05C19.9813 10.5255 19.5273 9.03809 18.6915 7.76295C17.8557 6.48781 16.673 5.47804 15.2826 4.85257C13.8921 4.2271 12.3519 4.01198 10.8433 4.23253C9.33473 4.45309 7.92057 5.10013 6.7674 6.09748C5.61422 7.09482 4.77005 8.40092 4.3343 9.86195C3.89856 11.323 3.88938 12.8781 4.30786 14.3442C4.72634 15.8103 5.55504 17.1262 6.69637 18.1371C7.83769 19.148 9.24412 19.8117 10.75 20.05V14.38H8.75001V12.05H10.75V10.28C10.7037 9.86846 10.7483 9.45175 10.8807 9.05931C11.0131 8.66687 11.23 8.30827 11.5161 8.00882C11.8022 7.70936 12.1505 7.47635 12.5365 7.32624C12.9225 7.17612 13.3368 7.11255 13.75 7.14003C14.3498 7.14824 14.9482 7.20173 15.54 7.30003V9.30003H14.54C14.3676 9.27828 14.1924 9.29556 14.0276 9.35059C13.8627 9.40562 13.7123 9.49699 13.5875 9.61795C13.4627 9.73891 13.3667 9.88637 13.3066 10.0494C13.2464 10.2125 13.2237 10.387 13.24 10.56V12.07H15.46L15.1 14.4H13.25V20C15.1399 19.7011 16.8601 18.7347 18.0985 17.2761C19.3369 15.8175 20.0115 13.9634 20 12.05Z"
+                                    fill="#E10719" />
                             </svg>
                         </a>
-                        <a class="btn normal-case gap-0 !rounded-full btn-accent btn-sm w-8 h-8 px-0" target="_blank"
-                            href="/">
-                            <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f"
-                                class="svg-inline--fa fa-facebook-f " role="img" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 320 512" width="16">
-                                <path fill="currentColor"
-                                    d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z">
-                                </path>
+                        <a class="w-8 h-8 px-0" target="_blank" href="/">
+                            <?xml version="1.0" encoding="utf-8"?>
+                            <svg width="34px" height="34px" viewBox="0 0 48 48" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="24" cy="24" r="20" fill="#E10719" />
+                                <path
+                                    d="M24 14.1622C27.2041 14.1622 27.5837 14.1744 28.849 14.2321C30.019 14.2855 30.6544 14.481 31.0773 14.6453C31.6374 14.863 32.0371 15.123 32.457 15.5429C32.877 15.9629 33.137 16.3626 33.3547 16.9227C33.519 17.3456 33.7145 17.981 33.7679 19.1509C33.8256 20.4163 33.8378 20.7958 33.8378 23.9999C33.8378 27.2041 33.8256 27.5836 33.7679 28.849C33.7145 30.019 33.519 30.6543 33.3547 31.0772C33.137 31.6373 32.877 32.0371 32.4571 32.457C32.0371 32.8769 31.6374 33.1369 31.0773 33.3546C30.6544 33.519 30.019 33.7144 28.849 33.7678C27.5839 33.8255 27.2044 33.8378 24 33.8378C20.7956 33.8378 20.4162 33.8255 19.151 33.7678C17.981 33.7144 17.3456 33.519 16.9227 33.3546C16.3626 33.1369 15.9629 32.8769 15.543 32.457C15.1231 32.0371 14.863 31.6373 14.6453 31.0772C14.481 30.6543 14.2855 30.019 14.2321 28.849C14.1744 27.5836 14.1622 27.2041 14.1622 23.9999C14.1622 20.7958 14.1744 20.4163 14.2321 19.1509C14.2855 17.981 14.481 17.3456 14.6453 16.9227C14.863 16.3626 15.123 15.9629 15.543 15.543C15.9629 15.123 16.3626 14.863 16.9227 14.6453C17.3456 14.481 17.981 14.2855 19.151 14.2321C20.4163 14.1744 20.7959 14.1622 24 14.1622ZM24 12C20.741 12 20.3323 12.0138 19.0524 12.0722C17.7752 12.1305 16.9028 12.3333 16.1395 12.63C15.3504 12.9366 14.6812 13.3469 14.0141 14.0141C13.3469 14.6812 12.9366 15.3504 12.63 16.1395C12.3333 16.9028 12.1305 17.7751 12.0722 19.0524C12.0138 20.3323 12 20.741 12 23.9999C12 27.259 12.0138 27.6676 12.0722 28.9475C12.1305 30.2248 12.3333 31.0971 12.63 31.8604C12.9366 32.6495 13.3469 33.3187 14.0141 33.9859C14.6812 34.653 15.3504 35.0633 16.1395 35.3699C16.9028 35.6666 17.7752 35.8694 19.0524 35.9277C20.3323 35.9861 20.741 35.9999 24 35.9999C27.259 35.9999 27.6677 35.9861 28.9476 35.9277C30.2248 35.8694 31.0972 35.6666 31.8605 35.3699C32.6496 35.0633 33.3188 34.653 33.9859 33.9859C34.653 33.3187 35.0634 32.6495 35.37 31.8604C35.6667 31.0971 35.8695 30.2248 35.9278 28.9475C35.9862 27.6676 36 27.259 36 23.9999C36 20.741 35.9862 20.3323 35.9278 19.0524C35.8695 17.7751 35.6667 16.9028 35.37 16.1395C35.0634 15.3504 34.653 14.6812 33.9859 14.0141C33.3188 13.3469 32.6496 12.9366 31.8605 12.63C31.0972 12.3333 30.2248 12.1305 28.9476 12.0722C27.6677 12.0138 27.259 12 24 12Z"
+                                    fill="white" />
+                                <path
+                                    d="M24.0059 17.8433C20.6026 17.8433 17.8438 20.6021 17.8438 24.0054C17.8438 27.4087 20.6026 30.1675 24.0059 30.1675C27.4092 30.1675 30.1681 27.4087 30.1681 24.0054C30.1681 20.6021 27.4092 17.8433 24.0059 17.8433ZM24.0059 28.0054C21.7968 28.0054 20.0059 26.2145 20.0059 24.0054C20.0059 21.7963 21.7968 20.0054 24.0059 20.0054C26.2151 20.0054 28.0059 21.7963 28.0059 24.0054C28.0059 26.2145 26.2151 28.0054 24.0059 28.0054Z"
+                                    fill="white" />
+                                <path
+                                    d="M31.8507 17.5963C31.8507 18.3915 31.206 19.0363 30.4107 19.0363C29.6154 19.0363 28.9707 18.3915 28.9707 17.5963C28.9707 16.801 29.6154 16.1562 30.4107 16.1562C31.206 16.1562 31.8507 16.801 31.8507 17.5963Z"
+                                    fill="white" />
                             </svg>
                         </a>
                     </div>
@@ -900,11 +939,10 @@
             </svg>
             <span class="sr-only">Cerrar menú</span>
         </button>
-        <!-- form -->
+        <!-- form section -->
         <section class=" flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-            <div class="
-                    w-full bg-white rounded-lg
-                    shadow md:mt-0 sm:max-w-lg xl:p-0">
+            <div class="w-full bg-white rounded-lg
+                        shadow md:mt-0 sm:max-w-lg xl:p-0">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-xl font-bold text-neutral-content leading-tight tracking-tight md:text-2xl">
                         Iniciar sesión
@@ -916,7 +954,7 @@
                             </label>
                             <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-neutral-content rounded-lg
                                     focus:ring-base-500 focus:border-base-500
-                                    block w-full p-2.5" placeholder="mi_emaill@email.com" required="">
+                                    block w-full p-2.5" placeholder="mi_email@email.com" required="">
                         </div>
                         <div>
                             <label for="password" class="block mb-2 text-sm font-medium  text-neutral-content">
@@ -955,7 +993,7 @@
                             No tengo una cuenta todavía
                             <span class="ps-2">
                                 <a href="#" class="font-medium text-neutral-700 hover:underline">
-                                    Crear cuenta
+                                    Registrarme
                                 </a>
                             </span>
                         </p>
