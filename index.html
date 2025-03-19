@@ -488,19 +488,17 @@
                                         </article>
                                         <!-- product detail drawer component -->
                                         <div id="product-detail-drawer" class="
-                                                    z-99
-                                                    fixed bottom-0 left-0 right-0 
-                                                    md:mx-auto
-
-                                                    w-full h-auto
-                                                    md:max-w-screen-sm
-
-                                                    bg-white rounded-t-4xl md:rounded-4xl
-                                                    
-                                                    overflow-y-auto
-                                                    transition-transform 
-                                                    transform-none
-                                                    -translate-y-full md:-translate-y-[70%]
+                                                z-99
+                                                fixed bottom-0 left-0 right-0 
+                                                lg:mx-auto
+                                                w-full h-auto
+                                                lg:max-w-screen-sm
+                                                bg-white rounded-t-4xl lg:rounded-4xl
+                                                
+                                                overflow-y-auto
+                                                transition-transform 
+                                                transform-none
+                                                translate-y-full lg:-translate-y-[60%]
                                             " tabindex="-1" aria-labelledby="product-detail">
                                             <button type="button" data-drawer-hide="product-detail-drawer"
                                                 aria-controls="product-detail-drawer"
@@ -763,7 +761,7 @@
             <ul class="
                 lg:hidden
                 bg-base-100 
-                fixed z-35 flex min-h-[4rem] w-full gap-0
+                fixed z-30 flex min-h-[4rem] w-full gap-0
                 bottom-0  
             ">
                 <!-- search (active state: btn-accent) -->
@@ -871,10 +869,10 @@
     <!-- login drawer component -->
     <aside id="login-drawer" class="
         fixed top-0 left-0 z-50
-        h-screen min-w-[40rem] max-w-full
+        h-screen
         p-4 overflow-y-hidden
         transition-transform -translate-x-full
-        bg-neutral" tabindex="-1" aria-labelledby="drawer-left-label">
+        bg-neutral" style="width: 40rem; max-width: 100%;" tabindex="-1" aria-labelledby="drawer-left-label">
         <a href="/" class="
             flex flex-col items-center justify-center
             btn-ghost px-4
@@ -907,43 +905,43 @@
                             <label for="email" class="block mb-2 text-sm font-medium text-neutral-content">
                                 Email
                             </label>
-                            <input type="email" name="email" id="email"
-                                class="bg-gray-50 border border-gray-300 text-neutral-content rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                placeholder="nomber@email.com" required="">
+                            <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-neutral-content rounded-lg
+                                    focus:ring-base-500 focus:border-base-500
+                                    block w-full p-2.5" placeholder="mi_emaill@email.com" required="">
                         </div>
                         <div>
                             <label for="password" class="block mb-2 text-sm font-medium  text-neutral-content">
                                 Contraseña
                             </label>
-                            <input type="password" name="password" id="password" placeholder="••••••••"
-                                class="bg-gray-50 border border-gray-300 text-neutral-content rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                required="">
+                            <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-neutral-content rounded-lg
+                                focus:ring-base-500 focus:border-base-500
+                                block w-full p-2.5" required="">
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                                 <div class="flex items-center h-5">
-                                    <input id="remember" aria-describedby="remember" type="checkbox"
-                                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                                        required="">
+                                    <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 cursor-pointer
+                                        focus:ring-1" required="">
                                 </div>
                                 <div class="ml-3 text-sm">
-                                    <label for="remember" class="text-gray-500">
+                                    <label for="remember" class="text-base-500 cursor-pointer">
                                         Recuerdame
                                     </label>
                                 </div>
                             </div>
-                            <a href="#" class="text-sm font-medium text-primary-600 hover:underline">
+                            <a href="#" class="text-sm font-medium text-base-500 hover:underline">
                                 Olvidé mi contraseña
                             </a>
                         </div>
-                        <button type="submit"
-                            class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                        <button type="submit" class="w-full text-neutral-content bg-base-200 hover:bg-base-700
+                                focus:ring-2 focus:outline-none font-medium rounded-lg cursor-pointer
+                                text-sm px-5 py-2.5 text-center">
                             Iniciar sesión
                         </button>
                         <p class="text-sm font-light text-gray-500">
                             No tengo una cuenta todavía
                             <span class="ps-2">
-                                <a href="#" class="font-medium text-primary-600 hover:underline">
+                                <a href="#" class="font-medium text-base-500 hover:underline">
                                     Crear cuenta
                                 </a>
                             </span>
